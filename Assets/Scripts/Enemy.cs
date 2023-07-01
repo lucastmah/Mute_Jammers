@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy
 {
-    public float health;
-    public float attack_damage;
+    public int health;
+    public Projectile projectile;
     public float attack_speed;
     public float move_speed;
 
-    public Enemy(float health, float attack_damage, float attack_speed, float move_speed)
+
+    public Enemy(int health, int attack_damage, float projectile_speed, float attack_speed, float move_speed)
     {
         this.health = health;
-        this.attack_damage = attack_damage;
+        this.projectile = new Projectile(attack_damage, projectile_speed);
         this.attack_speed = attack_speed;
         this.move_speed = move_speed;
     }
