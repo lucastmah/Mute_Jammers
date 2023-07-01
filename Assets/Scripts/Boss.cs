@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-    // public int health;
-    // public int attack_damage;
-    // public float move_speed;
     public bool invincibility;
 
-    public Boss(int health, int attack_damage, float move_speed)
+    public Boss(int health, int attack_damage, float projectile_speed, float attack_speed, float move_speed)
     {
         this.health = health;
-        this.attack_damage = attack_damage;
-        this.move_speed = move_speed;
+        this.projectile = new Projectile(attack_damage, projectile_speed);
+        this.attack_speed = attack_speed;
         this.invincibility = true;
     }
 
