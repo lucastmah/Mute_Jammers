@@ -49,11 +49,11 @@ public class EnemyScript : MonoBehaviour
             if (attack_timer >= enemy.attack_speed)
             {
                 // deal damage to player
-                Instantiate(projectile, transform.position, transform.rotation);
+                attack_timer = 0;
             }
         }
         // if ranged and close enough, start shooting when possible
-        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == 2)
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == 2)
         {
             if (attack_timer >= enemy.attack_speed)
             {
