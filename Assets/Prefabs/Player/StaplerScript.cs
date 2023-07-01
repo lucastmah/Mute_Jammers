@@ -48,7 +48,12 @@ public class StaplerScript : MonoBehaviour
         openTimer = openTime;
         myShake = shakeAmount;
         staplerSound.Play();
-        GameObject t = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+
+        // Offset the staple spawn position randomly for a bit of visual *flair*
+        float stapleSpawnRange = .1f;
+        Vector3 stapleOffset = new Vector3(UnityEngine.Random.Range(-stapleSpawnRange,stapleSpawnRange),UnityEngine.Random.Range(-stapleSpawnRange,stapleSpawnRange),0);
+
+        GameObject t = Instantiate(projectile, stapleOffset + new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
         t.transform.localScale = new Vector3(angle, 1, 1);
     }
 

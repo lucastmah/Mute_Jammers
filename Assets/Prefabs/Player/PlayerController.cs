@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer myRenderer;
     private int shootTimer;
 
-    bool isFacingRight;
+    bool isFacingRight = true;
 
     [SerializeField] private PlayerStats stats;
 
@@ -57,22 +57,23 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get inputs
+        jumpPressed = Input.GetButton("Jump");
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         
-
+        // Buffer our jump inputs - if we press jump right before landing we'll still jump
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
         }
 
-        jumpPressed = Input.GetButton("Jump");
 
+        // Fire the staple
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
             int attackAngle = (isFacingRight) ? 1 : -1;
             stapler.FireStaple(attackAngle);
@@ -165,18 +166,18 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(horizontalSpeed, verticalSpeed);
 
         // Player visual squash and stretch
-        xStretch = Mathf.Lerp(xStretch, 1, 0.1f);
-        yStretch = Mathf.Lerp(yStretch, 1, 0.1f);
+        xStretch = Mathf.Lerp(xStretch, 1, 0.2f);
+        yStretch = Mathf.Lerp(yStretch, 1, 0.2f);
 
-        if (xStretch > 0.95f) {
+        if (Mathf.Abs(xStretch - 1) < .05f) {
             xStretch = 1;
         }
 
-        if (yStretch > 0.95f) {
+        if (Mathf.Abs(yStretch - 1) < .05f) {
             yStretch = 1;
         }
 
-        myRenderer.transform.transform.localScale = new Vector3(xStretch, yStretch, 1);
-
+        myRenderer.size += new Vector2(xStretch, yStretch);//, 1);
+        Debug.Log(myRenderer.size);
     }
 }
