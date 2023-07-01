@@ -44,7 +44,7 @@ public class EnemyScript : MonoBehaviour
             attack_timer += Time.deltaTime;
         }
         // if melee and close enough, hit player
-        if (player.transform.position.x - transform.position.x < 1 && enemy_type == 1)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && enemy_type == 1)
         {
             if (attack_timer >= enemy.attack_speed)
             {
@@ -52,17 +52,19 @@ public class EnemyScript : MonoBehaviour
             }
         }
         // if ranged and close enough, start shooting when possible
-        else if (player.transform.position.x - transform.position.x < 5 && enemy_type == 2)
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == 2)
         {
             if (attack_timer >= enemy.attack_speed)
             {
-                Instantiate(projectile, transform.position, transform.rotation);
+                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                Debug.Log("Fire");
             }
         }
         // move towards player
         else
         {
             transform.position = transform.position + enemy.move_speed * Time.deltaTime * direction;
+            Debug.Log("move");
         }
     }
 
