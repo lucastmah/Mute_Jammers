@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float acceleration = 2f; // acceleration to top speed
     [SerializeField] public float jumpSpeed = 3f;
 
-
+    // PLAYER ANIMATION
+    public Animator animator;
+    private float lastY;
 
 
     // Start is called before the first frame update
@@ -84,6 +86,11 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(horizontalMovement) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
+
+            // PLAYER MOVING
+            animator.SetBool("isWalking", true);
+        } else {
+            animator.SetBool("isWalking", false);
         }
 
         verticalSpeed = rb.velocity.y;
@@ -100,9 +107,27 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(jumpBufferTimer);
         if (!IsGrounded()) {
             jumpBufferTimer--;
+            
+            // Set animation to jumping
+            if (verticalSpeed > 0) {
+                animator.SetBool("isJumping", true);
+                animator.SetBool("isWalking", false);
+            } 
+            
+            // Set animation to falling
+            else {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", true);
+                animator.SetBool("isWalking", false);
+            }
+
         } else {
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+
+            // Disable jump and fall flags to return to idle animation
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
         }
 
         // Redefine acceleration so we can modify it mid run

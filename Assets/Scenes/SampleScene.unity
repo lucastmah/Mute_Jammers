@@ -128,7 +128,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
   m_PrefabInstance: {fileID: 2318658731559959767}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &90802351
+--- !u!95 &90802358
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ Animator:
   m_GameObject: {fileID: 90802344}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63f1b1d7a82369d478cbc1038b7f8a28, type: 2}
+  m_Controller: {fileID: 9100000, guid: e3d974a5d22ed6e44923ead883c772dc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -697,6 +697,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7473764560079918639, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 90802358}
+    - target: {fileID: 7473764560079918639, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
       propertyPath: jumpSpeed
       value: 9.5
       objectReference: {fileID: 0}
@@ -714,5 +718,5 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 90802351}
+      addedObject: {fileID: 90802358}
   m_SourcePrefab: {fileID: 100100000, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
