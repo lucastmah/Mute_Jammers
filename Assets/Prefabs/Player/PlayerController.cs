@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     bool isFacingRight = true;
 
+    [SerializeField] private PlayerStats stats;
 
     // UPGRADE STATS
     public int ShootTime = 5; // frames that need to pass between each gun fire

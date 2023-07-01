@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
+    public PlayerStats playerStats;
     public GameObject projectile;
     private Enemy enemy;
     public int health;
@@ -57,7 +58,9 @@ public class EnemyScript : MonoBehaviour
         {
             if (attack_timer >= enemy.attack_speed)
             {
-                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                int projDirection = (direction == Vector3.right) ? 1 : -1;
+                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
                 Debug.Log("Fire");
                 attack_timer = 0;
             }
@@ -81,11 +84,12 @@ public class EnemyScript : MonoBehaviour
         if (enemy_type == 3)
         {
             // deal damage to player
+            playerStats.DamageTaken(attack_damage);
             Destroy(gameObject);
         }
     }
 
-    private void TakeDamage(int damage)
+    private void DamageTaken(int damage)
     {
         enemy.health -= damage;
     }
