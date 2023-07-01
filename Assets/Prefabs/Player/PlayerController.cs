@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     int footstepTimer;
     [SerializeField] private int footstepTime = 30;
 
+    [SerializeField] private StaplerScript stapler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,10 +53,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
+            stapler.FireStaple();
         }
 
         jumpPressed = Input.GetButton("Jump");
-       
+
+        if (Input.GetButtonDown("Fire1")) {
+            stapler.FireStaple();
+        }
     }
 
     private void FixedUpdate() {
