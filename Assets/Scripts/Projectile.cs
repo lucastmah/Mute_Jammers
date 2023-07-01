@@ -5,9 +5,9 @@ using UnityEngine;
 public class Projectile {
 
     //basic properties
+    public bool isPlayerProjectile;
     private int HP;
     private float Speed;
-    public bool isPlayerProjectile;
 
     //other properties
     private bool Homing;
@@ -21,7 +21,7 @@ public class Projectile {
         Destructable = true;
     }
 
-    public Projectile(int hp, float speed, bool homing = false, bool destructable = false){
+    public Projectile(bool isPlayerProjectile, int hp, float speed, bool homing = false, bool destructable = false){
         this.HP = hp;
         this.Speed = speed;
         this.Homing = homing;
