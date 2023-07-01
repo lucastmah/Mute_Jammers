@@ -40,7 +40,7 @@ public class StaplerScript : MonoBehaviour
 
     }
 
-    public void FireStaple() {
+    public void FireStaple(float angle) {
         openTimer = openTime;
         myShake = shakeAmount;
         staplerSound.Play();

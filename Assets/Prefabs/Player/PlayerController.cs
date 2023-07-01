@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private int shootTimer;
 
+    bool isFacingRight;
+
 
     // UPGRADE STATS
     public int ShootTime = 5; // frames that need to pass between each gun fire
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 12f; // top speed
     [SerializeField] public float acceleration = 2f; // acceleration to top speed
     [SerializeField] public float jumpSpeed = 3f;
+
+
 
 
     // Start is called before the first frame update
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get inputs
         horizontalMovement = Input.GetAxisRaw("Horizontal");
+        
 
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
@@ -67,7 +72,8 @@ public class PlayerController : MonoBehaviour
         jumpPressed = Input.GetButton("Jump");
 
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
-            stapler.FireStaple();
+            float attackAngle = (isFacingRight) ? 0 : Mathf.PI;
+            stapler.FireStaple(attackAngle);
             shootTimer = ShootTime;
         }
     }
@@ -76,6 +82,8 @@ public class PlayerController : MonoBehaviour
         // update the direction
         if (Mathf.Abs(horizontalMovement) > 0) {
             transform.localScale = new Vector3(Mathf.Sign(horizontalMovement) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+            isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
         }
 
         verticalSpeed = rb.velocity.y;
