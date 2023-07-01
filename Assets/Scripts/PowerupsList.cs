@@ -20,6 +20,8 @@ public class PowerupsList : MonoBehaviour
     public bool hasNoFallDmg = true;
     public bool hasUnlimitedAmmo = true;
 
+    public int currentLevel = 1;
+
 
     // Start is called before the first frame update
     void Start()
