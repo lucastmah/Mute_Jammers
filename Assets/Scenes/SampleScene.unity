@@ -123,6 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &90802344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+  m_PrefabInstance: {fileID: 2318658731559959767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &90802351
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90802344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63f1b1d7a82369d478cbc1038b7f8a28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,20 +625,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 65496121065242545, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
-      propertyPath: m_Size.x
-      value: 0.15681887
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 65496121065242545, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
-      propertyPath: m_Size.y
-      value: 0.7149769
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 65496121065242545, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0014653206
-      objectReference: {fileID: 0}
-    - target: {fileID: 65496121065242545, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.020858586
+    - target: {fileID: 1143736347645302901, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4652026026096774935, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -689,5 +711,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 90802351}
   m_SourcePrefab: {fileID: 100100000, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
