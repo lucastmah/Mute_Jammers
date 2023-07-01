@@ -49,6 +49,7 @@ public class EnemyScript : MonoBehaviour
             if (attack_timer >= enemy.attack_speed)
             {
                 // deal damage to player
+                Instantiate(projectile, transform.position, transform.rotation);
             }
         }
         // if ranged and close enough, start shooting when possible
@@ -58,6 +59,7 @@ public class EnemyScript : MonoBehaviour
             {
                 Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
                 Debug.Log("Fire");
+                attack_timer = 0;
             }
         }
         // move towards player
