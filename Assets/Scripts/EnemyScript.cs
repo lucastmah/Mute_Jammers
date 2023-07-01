@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
+    public PlayerStats playerStats;
     public GameObject projectile;
     private Enemy enemy;
     public int health;
@@ -44,25 +45,31 @@ public class EnemyScript : MonoBehaviour
             attack_timer += Time.deltaTime;
         }
         // if melee and close enough, hit player
-        if (player.transform.position.x - transform.position.x < 1 && enemy_type == 1)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && enemy_type == 1)
         {
             if (attack_timer >= enemy.attack_speed)
             {
                 // deal damage to player
+                attack_timer = 0;
             }
         }
         // if ranged and close enough, start shooting when possible
-        else if (player.transform.position.x - transform.position.x < 5 && enemy_type == 2)
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == 2)
         {
             if (attack_timer >= enemy.attack_speed)
             {
-                Instantiate(projectile, transform.position, transform.rotation);
+                GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                int projDirection = (direction == Vector3.right) ? 1 : -1;
+                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
+                Debug.Log("Fire");
+                attack_timer = 0;
             }
         }
         // move towards player
         else
         {
             transform.position = transform.position + enemy.move_speed * Time.deltaTime * direction;
+            Debug.Log("move");
         }
     }
 
@@ -71,11 +78,12 @@ public class EnemyScript : MonoBehaviour
         if (enemy_type == 3)
         {
             // deal damage to player
+            playerStats.DamageTaken(attack_damage);
             Destroy(gameObject);
         }
     }
 
-    private void TakeDamage(int damage)
+    private void DamageTaken(int damage)
     {
         enemy.health -= damage;
     }
