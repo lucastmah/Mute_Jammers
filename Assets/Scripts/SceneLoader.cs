@@ -9,4 +9,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(Scene);
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Application has been quit. This will be ignored in the editor.");
+        Application.Quit();
+    }
 }
