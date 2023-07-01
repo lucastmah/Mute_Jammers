@@ -44,11 +44,12 @@ public class StaplerScript : MonoBehaviour
 
     }
 
-    public void FireStaple(float angle) {
+    public void FireStaple(int angle) {
         openTimer = openTime;
         myShake = shakeAmount;
         staplerSound.Play();
-        Instantiate(projectile, transform);
+        GameObject t = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+        t.transform.localScale = new Vector3(angle, 1, 1);
     }
 
     public void VisualUpdate(bool isFacingRight) {
