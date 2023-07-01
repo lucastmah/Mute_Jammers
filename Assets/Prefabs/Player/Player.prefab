@@ -502,16 +502,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8ffdd283c8d54499b832687bb34111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  acceleration: 2
-  jumpSpeed: 12
   rb: {fileID: 6434741494068085516}
   groundCheck: {fileID: 4652026026096774935}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   jumpBufferTime: 10
-  MaxJumps: 1
   walkingSounds:
   - {fileID: 8300000, guid: b1cf5945013e0c341be3561e00bd7b74, type: 3}
   - {fileID: 8300000, guid: e1283dc16c7815844bc776cde7b539ca, type: 3}
@@ -521,6 +517,11 @@ MonoBehaviour:
   footstepTime: 120
   stapler: {fileID: 5378654151038100002}
   playerJumpSource: {fileID: 1143736347645302901}
+  ShootTime: 5
+  MaxJumps: 1
+  moveSpeed: 8
+  acceleration: 2
+  jumpSpeed: 12
 --- !u!82 &1143736347645302901
 AudioSource:
   m_ObjectHideFlags: 0
