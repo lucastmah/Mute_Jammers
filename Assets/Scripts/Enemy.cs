@@ -9,12 +9,12 @@ public class Enemy
     public Projectile projectile;
     public float attack_speed;
     public float move_speed;
-
+    public Sprite projectileSprite;
 
     public Enemy(int health, int attack_damage, float projectile_speed, float attack_speed, float move_speed)
     {
         this.health = health;
-        this.projectile = new Projectile(false, attack_damage, projectile_speed);
+        this.projectile = new Projectile(projectileSprite, false, attack_damage, projectile_speed);
         this.attack_speed = attack_speed;
         this.move_speed = move_speed;
     }
