@@ -9,6 +9,8 @@ public class ProjectileBehavior : MonoBehaviour
 
     public Projectile ProjectileClass;
 
+    private int lifetime = 60;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,11 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector2(transform.position.x + ProjectileClass.Speed, transform.position.y);
+        lifetime--;
+        if(lifetime < 0 )
+        {
+            Destroy( self );
+        }
+        transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * transform.localScale.x, transform.position.y);
     }
 }

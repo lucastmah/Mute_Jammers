@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         jumpPressed = Input.GetButton("Jump");
 
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
-            float attackAngle = (isFacingRight) ? 0 : Mathf.PI;
+            int attackAngle = (isFacingRight) ? 1 : -1;
             stapler.FireStaple(attackAngle);
             shootTimer = ShootTime;
         }

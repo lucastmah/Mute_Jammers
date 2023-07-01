@@ -22,6 +22,8 @@ public class PowerupsList : MonoBehaviour
 
     public int currentLevel = 1;
 
+    private bool[] powerupArray;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +36,23 @@ public class PowerupsList : MonoBehaviour
         }
         instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
+        powerupArray = new bool[] { hasInvincibility, hasDoubleJump, 
+            hasBiggerProjectiles, hasDoubleProjectiles, hasHomingProjectiles, hasBonusAtk, 
+            hasBonusMvspd, hasBonusMaxHp, hasBonusJumpHeight, hasRegen, hasAcceleration, 
+            hasNoFallDmg, hasUnlimitedAmmo};
     }
 
     public static PowerupsList GetInstance()
     {
         return instance;
+    }
+
+    public bool[] GetPowerupArray()
+    {
+        powerupArray = new bool[] { hasInvincibility, hasDoubleJump,
+            hasBiggerProjectiles, hasDoubleProjectiles, hasHomingProjectiles, hasBonusAtk,
+            hasBonusMvspd, hasBonusMaxHp, hasBonusJumpHeight, hasRegen, hasAcceleration,
+            hasNoFallDmg, hasUnlimitedAmmo};
+        return powerupArray;
     }
 }
