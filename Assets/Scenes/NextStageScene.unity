@@ -804,7 +804,51 @@ PrefabInstance:
       value: PowerupsList
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasRegen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasBonusAtk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasNoFallDmg
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasBonusMaxHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasBonusMvspd
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasAcceleration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasInvincibility
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasBonusJumpHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasBiggerProjectiles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasDoubleProjectiles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasHomingProjectiles
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
