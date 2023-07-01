@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadScene(string Scene)
+    public static void LoadScene(string Scene)
     {
         SceneManager.LoadScene(Scene);
     }
 
-    public void QuitGame()
+    public static void QuitGame()
     {
         Debug.Log("Application has been quit. This will be ignored in the editor.");
         Application.Quit();
