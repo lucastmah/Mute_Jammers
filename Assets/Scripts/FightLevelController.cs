@@ -6,7 +6,6 @@ public class FightLevelController : MonoBehaviour
 {
     public GameObject player;
     public GameObject enemy;
-    public GameObject levelLoader;
 
     // Start is called before the first frame update
     void Start()
