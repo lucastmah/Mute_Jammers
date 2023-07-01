@@ -72,6 +72,12 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.name == "Player Projectile")
+        {
+            //TakeDamage(player.attack);
+            Destroy(gameObject);
+        }
+
         if (enemy_type == 3)
         {
             // deal damage to player
