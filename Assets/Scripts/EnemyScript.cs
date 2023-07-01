@@ -77,19 +77,18 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Player Projectile")
         {
-            //TakeDamage(player.attack);
+            //TakeDamage(player.health);
             Destroy(gameObject);
         }
 
         if (enemy_type == 3)
         {
             // deal damage to player
-            playerStats.DamageTaken(attack_damage);
             Destroy(gameObject);
         }
     }
 
-    private void DamageTaken(int damage)
+    private void TakeDamage(int damage)
     {
         enemy.health -= damage;
     }
