@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
     
 
+    // PLAYER ANIMATION
+    public Animator animator;
+    private float lastY;
+
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +105,11 @@ public class PlayerController : MonoBehaviour
         // Visually set the direction the player and stapler are facing
         if (Mathf.Abs(horizontalMovement) > 0) {
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
+
+            // PLAYER MOVING
+            animator.SetBool("isWalking", true);
+        } else {
+            animator.SetBool("isWalking", false);
             myRenderer.flipX = !isFacingRight;
             stapler.VisualUpdate(isFacingRight);
         }
@@ -122,6 +131,20 @@ public class PlayerController : MonoBehaviour
         // Jump buffering
         if (!IsGrounded()) {
             jumpBufferTimer--;
+            
+            // Set animation to jumping
+            if (verticalSpeed > 0) {
+                animator.SetBool("isJumping", true);
+                animator.SetBool("isWalking", false);
+            } 
+            
+            // Set animation to falling
+            else {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", true);
+                animator.SetBool("isWalking", false);
+            }
+
         } else {
             if (jumpBufferTimer != jumpBufferTime) {
                 // We're landing, this will fire once (ish?)
@@ -133,6 +156,10 @@ public class PlayerController : MonoBehaviour
             
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+
+            // Disable jump and fall flags to return to idle animation
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
         }
 
         // Fall damage start
