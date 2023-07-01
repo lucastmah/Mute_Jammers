@@ -22,4 +22,9 @@ public class ProjectileBehavior : MonoBehaviour
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        transform.position = new Vector2(transform.position.x + ProjectileClass.Speed, transform.position.y);
+    }
 }

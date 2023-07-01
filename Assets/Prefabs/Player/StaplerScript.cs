@@ -8,6 +8,7 @@ public class StaplerScript : MonoBehaviour
     [SerializeField] private Sprite close;
     [SerializeField] private SpriteRenderer myRenderer;
     [SerializeField] private AudioSource staplerSound;
+    [SerializeField] private GameObject projectile;
 
     [SerializeField] private int openTime = 20; // time for the sprite to stay open in frames
     private int openTimer;
@@ -44,5 +45,6 @@ public class StaplerScript : MonoBehaviour
         openTimer = openTime;
         myShake = shakeAmount;
         staplerSound.Play();
+        Instantiate(projectile, transform);
     }
 }
