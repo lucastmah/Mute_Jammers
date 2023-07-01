@@ -7,6 +7,7 @@ public class Projectile {
     //basic properties
     private int HP;
     private float Speed;
+    public bool isPlayerProjectile;
 
     //other properties
     private bool Homing;
