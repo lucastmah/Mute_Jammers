@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public int MaxJumps = 1;
     private int availableJumps = 0;
 
+    [SerializeField] private AudioClip[] walkingSounds;
+    [SerializeField] private AudioSource walkingSource;
+    int footstepTimer;
+    [SerializeField] private int footstepTime = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +60,15 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         verticalSpeed = rb.velocity.y;
         jumpPressedTimer--;
-        Debug.Log(jumpBufferTimer);
+        footstepTimer-= (int)Mathf.Abs(horizontalMovement * moveSpeed);
+
+        if (footstepTimer < 0 && IsGrounded()) {
+            footstepTimer = footstepTime;
+            walkingSource.clip = walkingSounds[Random.Range(0, walkingSounds.Length)];
+            walkingSource.Play();
+        }
+
+        //Debug.Log(jumpBufferTimer);
         if (!IsGrounded()) {
             jumpBufferTimer--;
         } else {
