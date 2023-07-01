@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Movement
-    [SerializeField] public float moveSpeed = 12f; // top speed
-    [SerializeField] public float acceleration = 2f; // acceleration to top speed
-    [SerializeField] public float jumpSpeed = 3f;
     private float horizontalMovement; // input for horizontal movement input
     private float horizontalSpeed, verticalSpeed; 
 
@@ -21,15 +18,27 @@ public class PlayerController : MonoBehaviour
     private float jumpPressedTimer;
     private bool jumpPressed;
 
-    public int MaxJumps = 1;
     private int availableJumps = 0;
 
     [SerializeField] private AudioClip[] walkingSounds;
     [SerializeField] private AudioSource walkingSource;
+
     int footstepTimer;
     [SerializeField] private int footstepTime = 30;
 
     [SerializeField] private StaplerScript stapler;
+    [SerializeField] private AudioSource playerJumpSource;
+
+    private int shootTimer;
+
+
+    // UPGRADE STATS
+    public int ShootTime = 5; // frames that need to pass between each gun fire
+    public int MaxJumps = 1;
+    [SerializeField] public float moveSpeed = 12f; // top speed
+    [SerializeField] public float acceleration = 2f; // acceleration to top speed
+    [SerializeField] public float jumpSpeed = 3f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,19 +62,25 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
-            stapler.FireStaple();
         }
 
         jumpPressed = Input.GetButton("Jump");
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
             stapler.FireStaple();
+            shootTimer = ShootTime;
         }
     }
 
     private void FixedUpdate() {
+        // update the direction
+        if (Mathf.Abs(horizontalMovement) > 0) {
+            transform.localScale = new Vector3(Mathf.Sign(horizontalMovement) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
         verticalSpeed = rb.velocity.y;
         jumpPressedTimer--;
+        shootTimer--;
         footstepTimer-= (int)Mathf.Abs(horizontalMovement * moveSpeed);
 
         if (footstepTimer < 0 && IsGrounded()) {
@@ -103,11 +118,14 @@ public class PlayerController : MonoBehaviour
 
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -moveSpeed, moveSpeed);
 
+        // Jump
         if (CanJump() && jumpPressedTimer > 0) {
             verticalSpeed = jumpSpeed;
             availableJumps--;
             jumpPressedTimer = 0;
             jumpBufferTimer = 0;
+
+            playerJumpSource.Play();
         }
 
         if (!jumpPressed && verticalSpeed > 0) {
