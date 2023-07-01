@@ -5,13 +5,15 @@ using UnityEngine;
 public class FightLevelController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject enemy;
+    //list of enemy prefabs for the levels in order 1, 2, 3, ... 
+    public GameObject[] enemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!(enemy != null)) {
-            Instantiate(enemy);
+        if (!(enemies != null)) {
+            int currLevelIndex = Mathf.Max(0, PowerupsList.GetInstance().currentLevel - 1);
+            Instantiate(enemies[currLevelIndex], new Vector3(7, -3, 0), Quaternion.identity);
         }
     }
 
