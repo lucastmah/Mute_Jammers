@@ -57,7 +57,9 @@ public class EnemyScript : MonoBehaviour
         {
             if (attack_timer >= enemy.attack_speed)
             {
-                Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                int projDirection = (direction == Vector3.right) ? 1 : -1;
+                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
                 Debug.Log("Fire");
                 attack_timer = 0;
             }
