@@ -8,16 +8,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 12f; // top speed
     [SerializeField] private float acceleration = 2f; // acceleration to top speed
     [SerializeField] private float jumpSpeed = 3f;
-    private float horizontalMovement; // input for horizontal movement
+    private float horizontalMovement; // input for horizontal movement input
     private float horizontalSpeed, verticalSpeed; 
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    // Smoothing
+    // Platformer "cheating" smoothing
     private float jumpBufferTimer;
-    [SerializeField] private float jumpBufferTime = 60;
+    [SerializeField] private float jumpBufferTime = 20;
     private float jumpPressedTimer;
     private bool jumpPressed;
 
@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Get inputs
         horizontalMovement = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 60;
-            
         }
 
         jumpPressed = Input.GetButton("Jump");
