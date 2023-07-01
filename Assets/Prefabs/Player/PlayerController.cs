@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         if (footstepTimer < 0 && IsGrounded()) {
             footstepTimer = footstepTime;
-            walkingSource.clip = walkingSounds[Random.Range(0, walkingSounds.Length)];
+            walkingSource.clip = walkingSounds[UnityEngine.Random.Range(0, walkingSounds.Length)];
             walkingSource.Play();
         }
 

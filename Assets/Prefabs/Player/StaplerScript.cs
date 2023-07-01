@@ -36,7 +36,7 @@ public class StaplerScript : MonoBehaviour
         }
         myShake *= .65f;
 
-        transform.position = transform.parent.gameObject.transform.position + new Vector3(.15f,0,-1) + new Vector3(Random.Range(-myShake, myShake), Random.Range(-myShake, myShake), 0);
+        transform.position = transform.parent.gameObject.transform.position + new Vector3(.15f,0,-1) + new Vector3(UnityEngine.Random.Range(-myShake, myShake), UnityEngine.Random.Range(-myShake, myShake), 0);
 
     }
 
