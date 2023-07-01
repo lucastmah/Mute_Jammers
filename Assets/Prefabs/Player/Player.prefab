@@ -524,6 +524,7 @@ MonoBehaviour:
   moveSpeed: 4
   acceleration: 2
   jumpSpeed: 9.5
+  takesFallDamage: 0
 --- !u!82 &1143736347645302901
 AudioSource:
   m_ObjectHideFlags: 0
