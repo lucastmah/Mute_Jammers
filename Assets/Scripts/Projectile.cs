@@ -8,7 +8,7 @@ public class Projectile {
     //basic properties
     private Sprite ProjectileSprite;
     public bool isPlayerProjectile;
-    public float Speed = 1f;
+    public float Speed = 0.1f;
 
     //other properties
     public bool Homing;

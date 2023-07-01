@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileClass:
     isPlayerProjectile: 1
-    Speed: 0.1
+    Speed: 0.2
     Homing: 0

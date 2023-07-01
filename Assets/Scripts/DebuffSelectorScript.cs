@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class DebuffSelectorScript : MonoBehaviour
 {
+    public GameObject debuff0;
     public GameObject debuff1;
     public GameObject debuff2;
-    public GameObject debuff3;
     private int[] debuffIndices;
 
     // Start is called before the first frame update
@@ -19,9 +21,10 @@ public class DebuffSelectorScript : MonoBehaviour
         if (list.hasInvincibility)
         {
             //special case: set all to remove invincibility 
-            debuff1.SetActive(false);
-            debuff3.SetActive(false);
+            debuff0.SetActive(false);
+            debuff2.SetActive(false);
             debuffIndices[1] = 0;
+            UpdateButtonText(1);
         }
         else
         {
@@ -38,20 +41,23 @@ public class DebuffSelectorScript : MonoBehaviour
             if (numDebuffsLeft == 1)
             {
                 //select the only remaining debuff
-                debuff1.SetActive(false);
-                debuff3.SetActive(false);
+                debuff0.SetActive(false);
+                debuff2.SetActive(false);
                 int[] temp = new int[numDebuffsLeft];
                 validDebuffIndices.CopyTo(temp);
                 debuffIndices[1] = temp[0];
+                UpdateButtonText(1);
             }
             else if (numDebuffsLeft == 2)
             {
                 //select from only 2 debuffs
-                debuff2.SetActive(false);
+                debuff1.SetActive(false);
                 int[] temp = new int[numDebuffsLeft];
                 validDebuffIndices.CopyTo(temp);
                 debuffIndices[0] = temp[0];
                 debuffIndices[2] = temp[1];
+                UpdateButtonText(0);
+                UpdateButtonText(2);
             }
             else
             {
@@ -84,6 +90,10 @@ public class DebuffSelectorScript : MonoBehaviour
                     numDebuffsLeft--;
                 }
                 Debug.Log("Debuff indices: " + debuffIndices[0] + " " + debuffIndices[1] + " " + debuffIndices[2]);
+                for(int i = 0; i < 3; i++)
+                {
+                    UpdateButtonText(i);
+                }
             }
         }
     }
@@ -93,6 +103,74 @@ public class DebuffSelectorScript : MonoBehaviour
         var foos = new List<int>(arr);
         foos.RemoveAt(index);
         return foos.ToArray();
+    }
+
+    private void UpdateButtonText(int buttonIndex)
+    {
+        if (buttonIndex == 0)
+        {
+            debuff0.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = getTextFromDebuffIndex(debuffIndices[buttonIndex]);
+        }
+        else if (buttonIndex == 1)
+        {
+            debuff1.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = getTextFromDebuffIndex(debuffIndices[buttonIndex]);
+        }
+        else
+        {
+            debuff2.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = getTextFromDebuffIndex(debuffIndices[buttonIndex]);
+        }
+    }
+
+    private string getTextFromDebuffIndex(int debuffIndex)
+    {
+        string text;
+        switch (debuffIndex)
+        {
+            case 0:
+                text = "Invincibility";
+                break;
+            case 1:
+                text = "Double jump";
+                break;
+            case 2:
+                text = "Projectile size";
+                break;
+            case 3:
+                text = "Double projectiles";
+                break;
+            case 4:
+                text = "Homing projectiles";
+                break;
+            case 5:
+                text = "Bonus attack power";
+                break;
+            case 6:
+                text = "Bonus move speed";
+                break;
+            case 7:
+                text = "Bonus max HP";
+                break;
+            case 8:
+                text = "Bonus jump height";
+                break;
+            case 9:
+                text = "HP regen";
+                break;
+            case 10:
+                text = "Bonus acceleration";
+                break;
+            case 11:
+                text = "No fall damage";
+                break;
+            case 12:
+                text = "No need to reload";
+                break;
+            default:
+                Debug.LogWarning("getTextFromDebuff: Invalid index. Valid range is [0,12]; value passed = " + debuffIndex);
+                text = "Default";
+                break;
+        }
+        return text;
     }
 
     public void RemoveBuff(int buttonIndex)

@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer myRenderer;
     private int shootTimer;
 
-    bool isFacingRight;
+    bool isFacingRight = true;
 
 
     // UPGRADE STATS
@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float acceleration = 2f; // acceleration to top speed
     [SerializeField] public float jumpSpeed = 3f;
 
-
+    float xStretch = 1;
+    float yStretch = 1;
 
 
     // Start is called before the first frame update
@@ -55,22 +56,23 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get inputs
+        jumpPressed = Input.GetButton("Jump");
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         
-
+        // Buffer our jump inputs - if we press jump right before landing we'll still jump
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
         }
 
-        jumpPressed = Input.GetButton("Jump");
 
+        // Fire the staple
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
             int attackAngle = (isFacingRight) ? 1 : -1;
             stapler.FireStaple(attackAngle);
@@ -79,35 +81,49 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        // update the direction
+       
+        // Visually set the direction the player and stapler are facing
         if (Mathf.Abs(horizontalMovement) > 0) {
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
             myRenderer.flipX = !isFacingRight;
             stapler.VisualUpdate(isFacingRight);
         }
 
+        // Store the vertical speed from the rigidbody
         verticalSpeed = rb.velocity.y;
+
+        // Update timers
         jumpPressedTimer--;
         shootTimer--;
         footstepTimer-= (int)Mathf.Abs(horizontalMovement * moveSpeed);
 
+        // Play footstep SFX
         if (footstepTimer < 0 && IsGrounded()) {
             footstepTimer = footstepTime;
             walkingSource.clip = walkingSounds[UnityEngine.Random.Range(0, walkingSounds.Length)];
             walkingSource.Play();
         }
 
-        //Debug.Log(jumpBufferTimer);
+        // Jump buffering
         if (!IsGrounded()) {
             jumpBufferTimer--;
         } else {
+            if (jumpBufferTimer != jumpBufferTime) {
+                // We're landing, this will fire once (ish?)
+                xStretch = 2.4f;
+                yStretch = .5f;
+            }
+            
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+
+            
         }
 
         // Redefine acceleration so we can modify it mid run
         float accel = acceleration;
         
+        // Reduce our acceleration if we're in the air
         if (Mathf.Sign(horizontalMovement) != Mathf.Sign(horizontalSpeed)) {
             if (IsGrounded()) {
                 accel *= 0.95f;
@@ -117,16 +133,17 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
+        // Calculate the horizontal movement speed
         horizontalSpeed += horizontalMovement * accel;
 
         if (Mathf.Abs(horizontalMovement) < 0.1f) {
             horizontalSpeed *= 0.595f;
         }
 
+        // Clamp the horizontal speed
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, -moveSpeed, moveSpeed);
 
-        // Jump
+        // Start jump
         if (CanJump() && jumpPressedTimer > 0) {
             verticalSpeed = jumpSpeed;
             availableJumps--;
@@ -134,12 +151,32 @@ public class PlayerController : MonoBehaviour
             jumpBufferTimer = 0;
 
             playerJumpSource.Play();
+            xStretch = .5f;
+            yStretch = 2f;
         }
 
+        // Variable jump height
         if (!jumpPressed && verticalSpeed > 0) {
             verticalSpeed *= 0.875f;
         }
 
+
+        // Final velocity set
         rb.velocity = new Vector2(horizontalSpeed, verticalSpeed);
+
+        // Player visual squash and stretch
+        xStretch = Mathf.Lerp(xStretch, 1, 0.2f);
+        yStretch = Mathf.Lerp(yStretch, 1, 0.2f);
+
+        if (Mathf.Abs(xStretch - 1) < .05f) {
+            xStretch = 1;
+        }
+
+        if (Mathf.Abs(yStretch - 1) < .05f) {
+            yStretch = 1;
+        }
+
+        myRenderer.size += new Vector2(xStretch, yStretch);//, 1);
+        Debug.Log(myRenderer.size);
     }
 }

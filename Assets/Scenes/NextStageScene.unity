@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7437548088761930755, guid: c1137b0526d43fc4b919561a754ba127, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7437548088761930755, guid: c1137b0526d43fc4b919561a754ba127, type: 3}
       propertyPath: m_LocalPosition.x
@@ -654,7 +654,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045019050
 GameObject:
@@ -805,11 +805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasRegen
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasBonusAtk
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasNoFallDmg
@@ -817,19 +817,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasBonusMaxHp
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasBonusMvspd
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasDoubleJump
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasAcceleration
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasInvincibility
@@ -837,23 +837,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasBonusJumpHeight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasBiggerProjectiles
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasDoubleProjectiles
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: hasHomingProjectiles
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -995,11 +995,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1045019051}
+  - {fileID: 513737971}
   - {fileID: 1648820498}
   - {fileID: 1485099568}
-  - {fileID: 513737971}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1438,9 +1438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e46d535e828c24f83c6bd95a803ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debuff1: {fileID: 1648820497}
-  debuff2: {fileID: 1485099567}
-  debuff3: {fileID: 513737970}
+  debuff0: {fileID: 1648820497}
+  debuff1: {fileID: 1485099567}
+  debuff2: {fileID: 513737970}
 --- !u!4 &1710105058
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,7 +1454,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786167965
 GameObject:
