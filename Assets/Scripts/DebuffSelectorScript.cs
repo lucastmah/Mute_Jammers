@@ -35,9 +35,23 @@ public class DebuffSelectorScript : MonoBehaviour
                 }
             }
             int numDebuffsLeft = validDebuffIndices.Count;
-            if (numDebuffsLeft < 3)
+            if (numDebuffsLeft == 1)
             {
-                //select only 2/1 debuffs
+                //select the only remaining debuff
+                debuff1.SetActive(false);
+                debuff3.SetActive(false);
+                int[] temp = new int[numDebuffsLeft];
+                validDebuffIndices.CopyTo(temp);
+                debuffIndices[1] = temp[0];
+            }
+            else if (numDebuffsLeft == 2)
+            {
+                //select from only 2 debuffs
+                debuff2.SetActive(false);
+                int[] temp = new int[numDebuffsLeft];
+                validDebuffIndices.CopyTo(temp);
+                debuffIndices[0] = temp[0];
+                debuffIndices[2] = temp[1];
             }
             else
             {
