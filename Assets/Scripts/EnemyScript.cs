@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
+    public PlayerStats playerStats;
     public GameObject projectile;
     private Enemy enemy;
     public int health;
@@ -71,11 +72,12 @@ public class EnemyScript : MonoBehaviour
         if (enemy_type == 3)
         {
             // deal damage to player
+            playerStats.DamageTaken(attack_damage);
             Destroy(gameObject);
         }
     }
 
-    private void TakeDamage(int damage)
+    private void DamageTaken(int damage)
     {
         enemy.health -= damage;
     }
