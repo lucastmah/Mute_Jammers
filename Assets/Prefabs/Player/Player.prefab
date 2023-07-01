@@ -365,7 +365,7 @@ Transform:
   - {fileID: 8259227316643142198}
   - {fileID: 1591284693972577914}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1363060139049399231
 SpriteRenderer:
@@ -515,9 +515,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c749c5ffb5175d949907fff548101a94, type: 3}
   - {fileID: 8300000, guid: 4523f04c6a56fc8488ba38036f04b4fd, type: 3}
   walkingSource: {fileID: 5471490593550456720}
-  footstepTime: 120
+  footstepTime: 50
   stapler: {fileID: 5378654151038100002}
   playerJumpSource: {fileID: 1143736347645302901}
+  myRenderer: {fileID: 1363060139049399231}
   ShootTime: 5
   MaxJumps: 1
   moveSpeed: 4

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private StaplerScript stapler;
     [SerializeField] private AudioSource playerJumpSource;
-
+    [SerializeField] private SpriteRenderer myRenderer;
     private int shootTimer;
 
     bool isFacingRight;
@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         // update the direction
         if (Mathf.Abs(horizontalMovement) > 0) {
-            transform.localScale = new Vector3(Mathf.Sign(horizontalMovement) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
+            myRenderer.flipX = !isFacingRight;
+            stapler.VisualUpdate(isFacingRight);
         }
 
         verticalSpeed = rb.velocity.y;
