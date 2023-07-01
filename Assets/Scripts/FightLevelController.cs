@@ -5,16 +5,24 @@ using UnityEngine;
 public class FightLevelController : MonoBehaviour
 {
     public GameObject player;
-    public Enemy enemy;
+    public GameObject enemy;
+    public GameObject levelLoader;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!(enemy != null)) {
+            Instantiate(enemy);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnemyDeath()
     {
-        
+        SceneLoader.LoadScene("NextStageScene");
+    }
+
+    public void OnPlayerDeath()
+    {
+        SceneLoader.LoadScene("GameOverScene");
     }
 }
