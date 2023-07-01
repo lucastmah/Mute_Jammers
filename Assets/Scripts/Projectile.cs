@@ -8,21 +8,23 @@ public class Projectile {
     //basic properties
     private Sprite ProjectileSprite;
     public bool isPlayerProjectile;
-    public int HP;
-    public float Speed;
+    public float Speed = 1f;
 
     //other properties
     public bool Homing;
-    public bool Destructable;
 
-    public Projectile(Sprite projectileSprite, bool isPlayerProjectile, int hp, float speed, bool homing = false, bool destructable = false){
-        this.ProjectileSprite = projectileSprite;
-        this.isPlayerProjectile = isPlayerProjectile;
-        this.HP = hp;
-        this.Speed = speed;
-        this.Homing = homing;
-        this.Destructable = destructable;
+    public Projectile() 
+    {
+        
     }
+
+    //public Projectile(Sprite projectileSprite, bool isPlayerProjectile, int hp, float speed, bool homing = false, bool destructable = false){
+    //    this.ProjectileSprite = projectileSprite;
+    //    this.isPlayerProjectile = isPlayerProjectile;
+    //    this.HP = hp;
+    //    this.Speed = speed;
+    //    this.Homing = homing;
+    //}
 
     public void setSprite(Sprite sprite)
     {
