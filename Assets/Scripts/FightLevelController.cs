@@ -18,6 +18,7 @@ public class FightLevelController : MonoBehaviour
 
     public void OnEnemyDeath()
     {
+        PowerupsList.GetInstance().currentLevel += 1;
         SceneLoader.LoadScene("NextStageScene");
     }
 

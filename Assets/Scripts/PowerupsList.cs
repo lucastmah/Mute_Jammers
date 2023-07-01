@@ -36,7 +36,7 @@ public class PowerupsList : MonoBehaviour
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
-    public PowerupsList getInstance()
+    public static PowerupsList GetInstance()
     {
         return instance;
     }
