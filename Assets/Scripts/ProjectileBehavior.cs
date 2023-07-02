@@ -54,7 +54,7 @@ public class ProjectileBehavior : MonoBehaviour
         Vector3 tPos = player.transform.position - gameObject.transform.position;
         Vector3 tRot = gameObject.transform.position - player.transform.position;
         float targetRot = calculateRotation(tRot.x, tRot.y);
-        transform.Rotate(0, 0, targetRot - ((transform.rotation.z < 0)? 360 + transform.rotation.z: transform.rotation.z));
+        transform.Rotate(0, 0, targetRot - ((transform.rotation.z < 0)? 360 + transform.rotation.z * 180: transform.rotation.z * 180));
         if(onStart)
         {
             transform.localScale = new Vector3(1, 1, 1);
