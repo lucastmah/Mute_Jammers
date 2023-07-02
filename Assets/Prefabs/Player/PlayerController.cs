@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        stapler.VisualUpdate(isFacingRight);
     }
 
     private bool CanJump() {
@@ -226,10 +226,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply the stretch
-        myRenderer.transform.transform.localScale = new Vector3(xStretch, yStretch, 1);
-        
+        myRenderer.transform.localScale = new Vector3(xStretch, yStretch, 1);
+
         // Don't stretch the stapler, apply an inverse scale on it
-        stapler.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
+       // stapler.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
         
 
         // Fall damage stuff
@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!wasGroundedLastFrame && IsGrounded()) {
-            Debug.Log(startY - transform.position.y);
+            Debug.Log(transform.position.y);
             if (startY - transform.position.y > 2) {
                 DoFallDamage();
             }
