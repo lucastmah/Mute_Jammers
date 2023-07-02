@@ -146,4 +146,7 @@ MonoBehaviour:
   ProjectileClass:
     isPlayerProjectile: 1
     Speed: 0.2
+    lifetime: 60
+    damage: 10
     Homing: 0
+    acceleration: 0.01
