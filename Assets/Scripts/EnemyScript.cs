@@ -32,6 +32,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         // determine direction which direction enemy should face relative to player
+        //Debug.Log("Plsyerpos = " + player.transform.position);
         if (player.transform.position.x < transform.position.x)
         {
             direction = Vector3.left;
@@ -87,6 +88,7 @@ public class EnemyScript : MonoBehaviour
             else if (enemy_type == (int)Monster.Bomber)
             {
                 //Debug.Log("you've been bombed");
+                Debug.Log("BOOM!");
                 playerStats.DamageTaken(enemy.attack_damage);
                 Destroy(gameObject);
             }

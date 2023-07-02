@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 596112537920825103, guid: 3f64d3ade9b6846a09a7cd8255c778b4, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      objectReference: {fileID: 1539032337}
     - target: {fileID: 596112537920825103, guid: 3f64d3ade9b6846a09a7cd8255c778b4, type: 3}
       propertyPath: playerStats
       value: 
@@ -232,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 6345184406522683933, guid: 3f64d3ade9b6846a09a7cd8255c778b4, type: 3}
       propertyPath: m_Name
       value: EnemyRanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345184406522683933, guid: 3f64d3ade9b6846a09a7cd8255c778b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -368,6 +372,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1539032337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+  m_PrefabInstance: {fileID: 1621493447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1621493447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,10 +768,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBomber
       objectReference: {fileID: 0}
+    - target: {fileID: 1241968642696374309, guid: fcd60a2747bfa40d7a53cd68ceda5bcd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2967488906958130643, guid: fcd60a2747bfa40d7a53cd68ceda5bcd, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      objectReference: {fileID: 1539032337}
     - target: {fileID: 2967488906958130643, guid: fcd60a2747bfa40d7a53cd68ceda5bcd, type: 3}
       propertyPath: move_speed
       value: 2
@@ -832,6 +845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMelee
       objectReference: {fileID: 0}
+    - target: {fileID: 5452691270109066644, guid: 1bd52f31863d947909c2e94643ed24e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5504275315056100775, guid: 1bd52f31863d947909c2e94643ed24e2, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -879,7 +896,7 @@ PrefabInstance:
     - target: {fileID: 8288933771507602699, guid: 1bd52f31863d947909c2e94643ed24e2, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 7673499090317660382, guid: 0b11c7a47c281764eb918b5ab25745da, type: 3}
+      objectReference: {fileID: 1539032337}
     - target: {fileID: 8288933771507602699, guid: 1bd52f31863d947909c2e94643ed24e2, type: 3}
       propertyPath: move_speed
       value: 1
