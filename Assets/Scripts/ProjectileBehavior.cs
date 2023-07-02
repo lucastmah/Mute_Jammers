@@ -167,7 +167,8 @@ public class ProjectileBehavior : MonoBehaviour
         {
             return;
         }
-        else if (ProjectileClass.isPlayerProjectile && collision.gameObject.CompareTag("Player"))
+
+        else if (ProjectileClass.isPlayerProjectile && (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player Projectile")))
         {
             return;
         }

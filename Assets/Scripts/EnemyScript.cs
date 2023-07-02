@@ -145,7 +145,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Debug.Log("active");
         if (enemy_type == (int)(Monster.Floater)) {
-            move_speed = 0.025f;
+            //move_speed = 0.025f;
             if (attack_timer < 0) {
                 xDir = (int)Mathf.Sign(player.transform.position.x - transform.position.x);
                 yDir = (int)Mathf.Sign(player.transform.position.y - transform.position.y);
@@ -153,7 +153,7 @@ public class EnemyScript : MonoBehaviour
                 attack_timer = 5;
             }
             attack_timer--;
-            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed;
+            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed * Time.deltaTime;
             return;
         }
 
