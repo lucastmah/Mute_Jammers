@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (recoveryTimer > 0) {
-            //jumpPressed = false;
-            //horizontalMovement = 0;
-            //return;
+            jumpPressed = false;
+            horizontalMovement = 0;
+            return;
         }
 
         // Get inputs
