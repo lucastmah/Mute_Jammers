@@ -6,7 +6,9 @@ enum Monster
 {
     Melee = 1,
     Ranged = 2,
-    Bomber = 3
+    Bomber = 3,
+    Mage = 4,
+    Boss = 5
 }
 
 public class EnemyScript : MonoBehaviour
@@ -14,6 +16,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
     public PlayerStats playerStats;
     public GameObject projectile;
+    public MageAttack mageAttack;
     private Enemy enemy;
     public int health;
     public int attack_damage;
@@ -22,17 +25,18 @@ public class EnemyScript : MonoBehaviour
     public int move_speed;
     public int enemy_type;
     public float attack_timer;
+    public bool invincibility;
     public Vector3 direction;
 
     void Start()
     {
-        enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed);
+        enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
     }
     // Update is called once per frame
     void Update()
     {
         // determine direction which direction enemy should face relative to player
-        //Debug.Log("Plsyerpos = " + player.transform.position);
+        //Debug.Log("Playerpos = " + player.transform.position);
         if (player.transform.position.x < transform.position.x)
         {
             direction = Vector3.left;
@@ -64,11 +68,22 @@ public class EnemyScript : MonoBehaviour
                 attack_timer = 0;
             }
         }
+
+        // if mage and close enough, start shooting when possible
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Mage)
+        {
+            if (attack_timer >= enemy.attack_speed)
+            {
+                mageAttack.StartMageAttack(attack_damage, player);
+                attack_timer = 0;
+            }
+        }
+
         // move towards player
         else
         {
             transform.position = transform.position + enemy.move_speed * Time.deltaTime * direction;
-            Debug.Log("move");
+            //Debug.Log("move");
         }
     }
 
@@ -85,6 +100,7 @@ public class EnemyScript : MonoBehaviour
                     playerStats.DamageTaken(enemy.attack_damage);
                 }
             }
+
             else if (enemy_type == (int)Monster.Bomber)
             {
                 //Debug.Log("you've been bombed");
