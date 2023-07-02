@@ -13,7 +13,7 @@ public class Projectile {
     public int lifetime = 60;
     public int damage = 10;
 
-    //other properties
+    //homing properties
     public bool Homing;
     public float acceleration = 0.01f;
 
