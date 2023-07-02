@@ -164,7 +164,6 @@ public class EnemyScript : MonoBehaviour
             //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
-                playerStats.LoseGame();
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
                 playerStats.WinLevel();
                 Destroy(gameObject);
