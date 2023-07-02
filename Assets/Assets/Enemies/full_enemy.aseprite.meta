@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: full_enemy
     originalName: 
-    pivot: {x: 0.5288136, y: -0.12987013}
+    pivot: {x: 0.5288136, y: -0.12738854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -129,7 +129,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 295
-      height: 154
+      height: 157
     spriteID: d7da0aae0773819469c92e85d99bd3db
     spriteBone: []
     spriteOutline: []
@@ -154,7 +154,7 @@ ScriptedImporter:
         x: 4
         y: 20
         width: 295
-        height: 154
+        height: 157
       spriteId: d7da0aae0773819469c92e85d99bd3db
     linkedCells: []
     parentIndex: -1
