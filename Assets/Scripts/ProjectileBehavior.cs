@@ -20,7 +20,6 @@ public class ProjectileBehavior : MonoBehaviour
         {
             homingBehavior(true);
         }
-        
     }
 
     // Update is called once per frame
@@ -42,7 +41,9 @@ public class ProjectileBehavior : MonoBehaviour
         }
         else
         {
-            transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * transform.localScale.x, transform.position.y);
+            float rot = gameObject.transform.rotation.z * Mathf.PI;
+            //Debug.Log(rot);
+            transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * Mathf.Cos(rot), transform.position.y + ProjectileClass.Speed * Mathf.Sin(rot));
         }
         
     }
@@ -53,7 +54,7 @@ public class ProjectileBehavior : MonoBehaviour
         Vector3 tPos = player.transform.position - gameObject.transform.position;
         Vector3 tRot = gameObject.transform.position - player.transform.position;
         float targetRot = calculateRotation(tRot.x, tRot.y);
-        transform.Rotate(0, 0, targetRot - ((transform.rotation.z < 0)? 360 + transform.rotation.z: transform.rotation.z));
+        transform.Rotate(0, 0, targetRot - ((transform.rotation.z < 0)? 360 + transform.rotation.z * 180: transform.rotation.z * 180));
         if(onStart)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -97,14 +98,17 @@ public class ProjectileBehavior : MonoBehaviour
         return new Vector2(vec.x / norm, vec.y / norm);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        Destroy(gameObject);
-        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!ProjectileClass.isPlayerProjectile && collision.gameObject.CompareTag("Enemy"))
+        {
+            return;
+        }
         Destroy(gameObject);
-        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+        if (ProjectileClass.isPlayerProjectile)
+        {
+            GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+            Destroy(t, 4);
+        }
     }
 }

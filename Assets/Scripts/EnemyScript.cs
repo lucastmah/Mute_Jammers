@@ -8,7 +8,9 @@ enum Monster
     Ranged = 2,
     Bomber = 3,
     Mage = 4,
-    Boss = 5
+    Boss = 5,
+    Floater = 6
+
 }
 
 public class EnemyScript : MonoBehaviour
@@ -22,18 +24,25 @@ public class EnemyScript : MonoBehaviour
     public int attack_damage;
     public float projectile_speed;
     public float attack_speed;
-    public int move_speed;
+    public float move_speed;
     public int enemy_type;
     public float attack_timer;
     public bool invincibility;
     public Vector3 direction;
+    [SerializeField] public GameObject deathParticles;
+
+    // mage
+    int xDir = 0;
+    int yDir = 0;
 
     void Start()
     {
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
+        player = GameObject.Find("Player");
+        playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // determine direction which direction enemy should face relative to player
         //Debug.Log("Playerpos = " + player.transform.position);
@@ -51,6 +60,20 @@ public class EnemyScript : MonoBehaviour
 
     private void Behaviour()
     {
+        Debug.Log("active");
+        if (enemy_type == (int)(Monster.Floater)) {
+            move_speed = 0.025f;
+            if (attack_timer < 0) {
+                xDir = (int)Mathf.Sign(player.transform.position.x - transform.position.x);
+                yDir = (int)Mathf.Sign(player.transform.position.y - transform.position.y);
+
+                attack_timer = 5;
+            }
+            attack_timer--;
+            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed;
+            return;
+        }
+
         // update attack timer
         if (attack_timer < enemy.attack_speed)
         {
@@ -62,8 +85,13 @@ public class EnemyScript : MonoBehaviour
             if (attack_timer >= enemy.attack_speed)
             {
                 GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                int projDirection = (direction == Vector3.right) ? 1 : -1;
-                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
+                projectileInstance.transform.Rotate(0, 0, 0);
+                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                projectileInstance.transform.Rotate(0, 0, 60);
+                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                projectileInstance.transform.Rotate(0, 0, 120);
+                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                projectileInstance.transform.Rotate(0, 0, 180);
                 //Debug.Log("Fire");
                 attack_timer = 0;
             }
@@ -74,8 +102,7 @@ public class EnemyScript : MonoBehaviour
             if (attack_timer >= enemy.attack_speed)
             {
                 GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                int projDirection = (direction == Vector3.right) ? 1 : -1;
-                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
+                projectileInstance.transform.Rotate(0, 0, (direction == Vector3.right) ? 0 : 180);
                 //Debug.Log("Fire");
                 attack_timer = 0;
             }
@@ -101,7 +128,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("collision detected");    
+        Debug.Log("collision detected");    
         //Debug.Log("enemy has hit " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -120,21 +147,33 @@ public class EnemyScript : MonoBehaviour
                 playerStats.DamageTaken(enemy.attack_damage);
                 Destroy(gameObject);
             }
+
+            else if (enemy_type == (int)Monster.Floater)
+            {
+                playerStats.DamageTaken(enemy.attack_damage);
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("hit");
         if (collision.gameObject.CompareTag("Player Projectile"))
         {
             TakeDamage(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
-            Debug.Log(enemy.health);
+            //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
+                playerStats.WinLevel();
                 Destroy(gameObject);
             }
+            Destroy(collision.gameObject);
         }
+
+        // Yeet the projectile
+        //if (collision.gameObject != null)
+          //  Destroy(collision.gameObject);
     }
 
     private void TakeDamage(int damage)

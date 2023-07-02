@@ -49,7 +49,7 @@ public class StaplerScript : MonoBehaviour
         
     }
 
-    public void FireStaple(int angle, int dmg) {
+    public void FireStaple(float angle, int dmg) {
         openTimer = openTime;
         myShake = shakeAmount;
         staplerSound.Play();
@@ -59,7 +59,7 @@ public class StaplerScript : MonoBehaviour
         Vector3 stapleOffset = new Vector3(UnityEngine.Random.Range(-stapleSpawnRange,stapleSpawnRange),UnityEngine.Random.Range(-stapleSpawnRange,stapleSpawnRange),0);
 
         GameObject t = Instantiate(projectile, stapleOffset + new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
-        t.transform.localScale = new Vector3(angle, 1, 1);
+        t.transform.Rotate(0, 0, angle);
         t.GetComponent<ProjectileBehavior>().ProjectileClass.damage = dmg;
         t.GetComponent<ProjectileBehavior>().FakeStapleClass = fakeStaple;
     }
