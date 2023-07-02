@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FightLevelController : MonoBehaviour
 {
@@ -117,9 +118,16 @@ public class FightLevelController : MonoBehaviour
                 numPowerupsLeft++;
             }
         }
-        if (numPowerupsLeft == 0)
-        {
+
+        print(SceneManager.GetActiveScene().name);
+    
+        if (SceneManager.GetActiveScene().name == "Level10") {
             ll.LoadScene("VictoryScene");
+        }
+        else if (numPowerupsLeft == 0)
+        {
+            ll.LoadScene("Level10");
+            // ll.LoadScene("VictoryScene");
         }
         else
         {
