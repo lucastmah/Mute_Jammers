@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
             
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
-        }
+        
 
             // Disable jump and fall flags to return to idle animation
             animator.SetBool("isJumping", false);
@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(stats.health);
+        //Debug.Log(stats.health);
         if (collision.gameObject.CompareTag("Enemy Projectile"))
         {
             stats.DamageTaken(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
