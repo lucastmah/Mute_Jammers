@@ -25,7 +25,7 @@ public class IntroTextManager : MonoBehaviour
                 text = "Another proud day as CEO! Work is easy, if not very interesting. Let's keep this quick..."; 
                 break;
             case 3: 
-                text = "VHS has been releases and you have been replaced as CEO. President is still good though, right?";
+                text = "VHS has been released and you have been replaced as CEO. President is still good though, right?";
                 break;
             case 4: 
                 text = "The Executive Board thinks you've been stressed lately, so perhaps Vice President would be better for you.";

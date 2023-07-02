@@ -166,6 +166,7 @@ public class EnemyScript : MonoBehaviour
             {
                 playerStats.LoseGame();
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
+                playerStats.WinLevel();
                 Destroy(gameObject);
             }
         }
