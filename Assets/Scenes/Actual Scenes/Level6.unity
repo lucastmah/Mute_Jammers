@@ -1600,6 +1600,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: numSpawnsAtOnce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: enemyOptions.Array.size
       value: 4
       objectReference: {fileID: 0}
