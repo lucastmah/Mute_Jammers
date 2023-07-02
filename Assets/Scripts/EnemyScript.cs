@@ -62,7 +62,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Behaviour()
     {
-        Debug.Log("active");
+        //Debug.Log("active");
         if (enemy_type == (int)(Monster.Floater)) {
             move_speed = 0.025f;
             if (attack_timer < 0) {
