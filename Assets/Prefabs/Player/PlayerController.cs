@@ -60,8 +60,8 @@ public class PlayerController : MonoBehaviour
     float yStretch = 1;
 
     int recoveryTimer = 0; // when not zero, we can't move
+    bool isInHurtState;
 
-    
 
     // PLAYER ANIMATION
     public Animator animator;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         PowerupsList p = PowerupsList.GetInstance();
         takesFallDamage = !p.hasNoFallDmg;
         if (p.hasDoubleJump) {
-            MaxJumps++;
+            MaxJumps+=2;
         }
         if (!p.hasBonusMvspd) {
             moveSpeed -= 1.5f;
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool CanJump() {
-        return (((IsGrounded() || jumpBufferTimer > 0) && availableJumps == 1) || (availableJumps > 1));
+        return (((IsGrounded() || jumpBufferTimer > 0) && availableJumps == 1) || (availableJumps >= 1));
     }
 
     private bool IsGrounded() {
@@ -102,7 +102,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (recoveryTimer > (recoveryTime * 0.8f)) {
+        isInHurtState = recoveryTimer > (recoveryTime * 0.8f);
+        if (isInHurtState) {
             jumpPressed = false;
             horizontalMovement = 0;
             return;
@@ -111,7 +112,9 @@ public class PlayerController : MonoBehaviour
         // Get inputs
         jumpPressed = Input.GetButton("Jump");
         horizontalMovement = Input.GetAxisRaw("Horizontal");
+
         
+
         // Buffer our jump inputs - if we press jump right before landing we'll still jump
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
@@ -287,6 +290,11 @@ public class PlayerController : MonoBehaviour
         }
 
         wasGroundedLastFrame = IsGrounded();
+
+        myRenderer.enabled = true;
+        if (isInHurtState) {
+            myRenderer.enabled = (recoveryTimer % 4) > 2;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -297,7 +305,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Hurt(int damageAmt) {
-        if (recoveryTimer > recoveryTime*0.75f)
+        if (recoveryTimer > recoveryTime)
             return;
 
         stats.DamageTaken(damageAmt);
@@ -311,6 +319,6 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Fall damage taken!");
         
-        Hurt(1);
+        Hurt(50);
     }
 }
