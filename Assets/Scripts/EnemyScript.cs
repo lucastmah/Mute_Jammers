@@ -56,8 +56,20 @@ public class EnemyScript : MonoBehaviour
         {
             attack_timer += Time.deltaTime;
         }
-        // if ranged and close enough, start shooting when possible
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
+        // if Monster = boss, shoot 4 projectiles at a certain range
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
+        {
+            if (attack_timer >= enemy.attack_speed)
+            {
+                GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+                int projDirection = (direction == Vector3.right) ? 1 : -1;
+                projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
+                //Debug.Log("Fire");
+                attack_timer = 0;
+            }
+        }
+        // if Monster = ranged and close enough, start shooting when possible
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
         {
             if (attack_timer >= enemy.attack_speed)
             {
