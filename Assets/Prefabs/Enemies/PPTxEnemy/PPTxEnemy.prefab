@@ -148,7 +148,7 @@ MonoBehaviour:
   attack_timer: 5
   invincibility: 0
   direction: {x: 0, y: 0, z: 0}
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
 --- !u!50 &2015831415687336577
 Rigidbody2D:
   serializedVersion: 4
