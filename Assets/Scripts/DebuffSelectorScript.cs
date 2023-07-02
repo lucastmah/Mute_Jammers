@@ -127,7 +127,7 @@ public class DebuffSelectorScript : MonoBehaviour
         switch (debuffIndex)
         {
             case 0:
-                text = "Invincibility";
+                text = "Take no damage";
                 break;
             case 1:
                 text = "Double jump";
@@ -136,7 +136,7 @@ public class DebuffSelectorScript : MonoBehaviour
                 text = "Projectile size";
                 break;
             case 3:
-                text = "Double projectiles";
+                text = "Double staples per shot";
                 break;
             case 4:
                 text = "Homing projectiles";

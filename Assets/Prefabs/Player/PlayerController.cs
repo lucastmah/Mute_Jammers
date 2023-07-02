@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     bool isFacingRight = true;
 
+    // Player stats
     [SerializeField] private PlayerStats stats;
 
     // UPGRADE STATS
@@ -170,6 +171,7 @@ public class PlayerController : MonoBehaviour
             
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+        
 
             // Disable jump and fall flags to return to idle animation
             animator.SetBool("isJumping", false);
@@ -260,20 +262,28 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = IsGrounded();
     }
 
-    public void Hurt() {
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy Projectile")) {
+            Hurt(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
+        }
+    }
+
+    public void Hurt(int damageAmt) {
         if (recoveryTimer > 0)
             return;
 
+        stats.DamageTaken(damageAmt);
         playerHurtSource.Play();
         recoveryTimer = recoveryTime;
     }
 
-    private void DoFallDamage() {
+        private void DoFallDamage() {
         if (!takesFallDamage)
             return;
 
         Debug.Log("Fall damage taken!");
         
-        Hurt();
+        Hurt(1);
     }
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8348827920002447823}
   - component: {fileID: 6912448620246036529}
   - component: {fileID: 3760501824161025710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: Enemy Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -145,5 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileClass:
     isPlayerProjectile: 0
-    Speed: 1
+    Speed: 0.2
+    lifetime: 60
+    damage: 10
     Homing: 0
+    acceleration: 0.01

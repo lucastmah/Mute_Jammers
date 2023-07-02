@@ -983,7 +983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You quit without being fired!
+  m_text: You quit before being fired!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ee0d6e4430836844b0d40ab48a8147a, type: 2}
   m_sharedMaterial: {fileID: 3061040649352594730, guid: 8ee0d6e4430836844b0d40ab48a8147a, type: 2}

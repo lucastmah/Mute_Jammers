@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum Monster
+{
+    Melee = 1,
+    Ranged = 2,
+    Bomber = 3
+}
+
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
@@ -13,7 +20,7 @@ public class EnemyScript : MonoBehaviour
     public float projectile_speed;
     public float attack_speed;
     public int move_speed;
-    public int enemy_type; // 1: melee | 2: ranged | 3: creepbruh
+    public int enemy_type;
     public float attack_timer;
     public Vector3 direction;
 
@@ -45,7 +52,7 @@ public class EnemyScript : MonoBehaviour
             attack_timer += Time.deltaTime;
         }
         // if melee and close enough, hit player
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && enemy_type == 1)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && enemy_type == (int)Monster.Melee)
         {
             if (attack_timer >= enemy.attack_speed)
             {
@@ -54,14 +61,14 @@ public class EnemyScript : MonoBehaviour
             }
         }
         // if ranged and close enough, start shooting when possible
-        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == 2)
+        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
         {
             if (attack_timer >= enemy.attack_speed)
             {
                 GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
                 int projDirection = (direction == Vector3.right) ? 1 : -1;
                 projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
-                Debug.Log("Fire");
+                //Debug.Log("Fire");
                 attack_timer = 0;
             }
         }
@@ -73,17 +80,27 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (enemy_type == 3)
+        //Debug.Log("hit");
+        if (collision.gameObject.CompareTag("Player Projectile"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
+            Debug.Log(enemy.health);
+            if (enemy.health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        if (enemy_type == (int)Monster.Bomber)
         {
             // deal damage to player
-            playerStats.DamageTaken(attack_damage);
             Destroy(gameObject);
         }
     }
 
-    private void DamageTaken(int damage)
+    private void TakeDamage(int damage)
     {
         enemy.health -= damage;
     }
