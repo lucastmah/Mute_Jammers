@@ -95,4 +95,9 @@ public class ProjectileBehavior : MonoBehaviour
         float norm = vec.x + vec.y;
         return new Vector2(vec.x / norm, vec.y / norm);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+    }
 }
