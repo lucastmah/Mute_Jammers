@@ -180,6 +180,10 @@ PrefabInstance:
       value: LevelController
       objectReference: {fileID: 0}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: currentBGM
+      value: 
+      objectReference: {fileID: 1527251156}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: delayBtwnSpawns
       value: 1
       objectReference: {fileID: 0}
@@ -1302,6 +1306,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7349c05a494f7bb41a93b8c9f0612076, type: 3}
+--- !u!82 &1527251156 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6379405386727013629, guid: 7349c05a494f7bb41a93b8c9f0612076, type: 3}
+  m_PrefabInstance: {fileID: 1527251155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878230108
 GameObject:
   m_ObjectHideFlags: 0
