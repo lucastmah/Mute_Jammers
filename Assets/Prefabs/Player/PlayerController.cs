@@ -103,7 +103,11 @@ public class PlayerController : MonoBehaviour
         // Fire the staple
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
             int attackAngle = (isFacingRight) ? 1 : -1;
-            stapler.FireStaple(attackAngle);
+            stapler.FireStaple(attackAngle, stats.attack);
+            if (PowerupsList.GetInstance().hasDoubleProjectiles)
+            {
+                stapler.FireStaple(attackAngle, stats.attack);
+            }
             shootTimer = ShootTime;
         }
     }
@@ -278,7 +282,7 @@ public class PlayerController : MonoBehaviour
         recoveryTimer = recoveryTime;
     }
 
-        private void DoFallDamage() {
+    private void DoFallDamage() {
         if (!takesFallDamage)
             return;
 

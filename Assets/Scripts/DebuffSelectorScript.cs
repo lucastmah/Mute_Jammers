@@ -133,40 +133,28 @@ public class DebuffSelectorScript : MonoBehaviour
                 text = "Double jump";
                 break;
             case 2:
-                text = "Projectile size";
-                break;
-            case 3:
                 text = "Double staples per shot";
                 break;
-            case 4:
-                text = "Homing projectiles";
+            case 3:
+                text = "Homing staples";
                 break;
-            case 5:
+            case 4:
                 text = "Bonus attack power";
                 break;
-            case 6:
+            case 5:
                 text = "Bonus move speed";
                 break;
-            case 7:
-                text = "Bonus max HP";
-                break;
-            case 8:
+            case 6:
                 text = "Bonus jump height";
                 break;
-            case 9:
-                text = "HP regen";
-                break;
-            case 10:
+            case 7:
                 text = "Bonus acceleration";
                 break;
-            case 11:
+            case 8:
                 text = "No fall damage";
                 break;
-            case 12:
-                text = "No need to reload";
-                break;
             default:
-                Debug.LogWarning("getTextFromDebuff: Invalid index. Valid range is [0,12]; value passed = " + debuffIndex);
+                Debug.LogWarning("getTextFromDebuff: Invalid index. Valid range is [0,8]; value passed = " + debuffIndex);
                 text = "Default";
                 break;
         }
@@ -185,43 +173,31 @@ public class DebuffSelectorScript : MonoBehaviour
                 PowerupsList.GetInstance().hasDoubleJump = false;
                 break;
             case 2:
-                PowerupsList.GetInstance().hasBiggerProjectiles = false;
-                break;
-            case 3:
                 PowerupsList.GetInstance().hasDoubleProjectiles = false;
                 break;
-            case 4:
+            case 3:
                 PowerupsList.GetInstance().hasHomingProjectiles = false;
                 break;
-            case 5:
+            case 4:
                 PowerupsList.GetInstance().hasBonusAtk = false;
                 break;
-            case 6:
+            case 5:
                 PowerupsList.GetInstance().hasBonusMvspd = false;
                 break;
-            case 7:
-                PowerupsList.GetInstance().hasBonusMaxHp = false;
-                break;
-            case 8:
+            case 6:
                 PowerupsList.GetInstance().hasBonusJumpHeight = false;
                 break;
-            case 9:
-                PowerupsList.GetInstance().hasRegen = false;
-                break;
-            case 10:
+            case 7:
                 PowerupsList.GetInstance().hasAcceleration = false;
                 break;
-            case 11:
+            case 8:
                 PowerupsList.GetInstance().hasNoFallDmg = false;
-                break;
-            case 12:
-                PowerupsList.GetInstance().hasUnlimitedAmmo = false;
                 break;
             default:
                 Debug.LogWarning("RemoveBuff: Invalid index. Valid range is [0,12]; value passed = " + buffIndex);
                 break;
 
         }
-        SceneLoader.LoadScene("FightLevel");
+        SceneLoader.LoadScene("LevelIntroText");
     }
 }

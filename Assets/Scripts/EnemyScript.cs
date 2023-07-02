@@ -32,6 +32,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         // determine direction which direction enemy should face relative to player
+        //Debug.Log("Plsyerpos = " + player.transform.position);
         if (player.transform.position.x < transform.position.x)
         {
             direction = Vector3.left;
@@ -51,17 +52,8 @@ public class EnemyScript : MonoBehaviour
         {
             attack_timer += Time.deltaTime;
         }
-        // if melee and close enough, hit player
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && enemy_type == (int)Monster.Melee)
-        {
-            if (attack_timer >= enemy.attack_speed)
-            {
-                // deal damage to player
-                attack_timer = 0;
-            }
-        }
         // if ranged and close enough, start shooting when possible
-        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
         {
             if (attack_timer >= enemy.attack_speed)
             {
@@ -80,6 +72,29 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log("collision detected");    
+        //Debug.Log("enemy has hit " + collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (enemy_type == (int)Monster.Melee)
+            {
+                if (attack_timer >= attack_speed)
+                {
+                    playerStats.DamageTaken(enemy.attack_damage);
+                }
+            }
+            else if (enemy_type == (int)Monster.Bomber)
+            {
+                //Debug.Log("you've been bombed");
+                Debug.Log("BOOM!");
+                playerStats.DamageTaken(enemy.attack_damage);
+                Destroy(gameObject);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("hit");
@@ -91,12 +106,6 @@ public class EnemyScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
-
-        if (enemy_type == (int)Monster.Bomber)
-        {
-            // deal damage to player
-            Destroy(gameObject);
         }
     }
 
