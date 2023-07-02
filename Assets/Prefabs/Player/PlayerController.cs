@@ -56,11 +56,15 @@ public class PlayerController : MonoBehaviour
 
     
 
+    // PLAYER ANIMATION
+    public Animator animator;
+    private float lastY;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        stapler.VisualUpdate(isFacingRight);
     }
 
     private bool CanJump() {
@@ -100,10 +104,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         // Visually set the direction the player and stapler are facing
-        if (Mathf.Abs(horizontalMovement) > 0) {
+        if (Mathf.Abs(horizontalMovement) > 0) { 
+            // PLAYER MOVING
+            animator.SetBool("isWalking", true);
+
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
+
+            // Flip the player's sprite
             myRenderer.flipX = !isFacingRight;
             stapler.VisualUpdate(isFacingRight);
+        } else {
+            animator.SetBool("isWalking", false);
         }
 
         // Store the vertical speed from the rigidbody
@@ -123,6 +134,20 @@ public class PlayerController : MonoBehaviour
         // Jump buffering
         if (!IsGrounded()) {
             jumpBufferTimer--;
+            
+            // Set animation to jumping
+            if (verticalSpeed > 0) {
+                animator.SetBool("isJumping", true);
+                animator.SetBool("isWalking", false);
+            } 
+            
+            // Set animation to falling
+            else {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", true);
+                animator.SetBool("isWalking", false);
+            }
+
         } else {
             if (jumpBufferTimer != jumpBufferTime) {
                 // We're landing, this will fire once (ish?)
@@ -134,6 +159,11 @@ public class PlayerController : MonoBehaviour
             
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+        }
+
+            // Disable jump and fall flags to return to idle animation
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
         }
 
         // Fall damage start
@@ -198,11 +228,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply the stretch
-        myRenderer.transform.transform.localScale = new Vector3(xStretch, yStretch, 1);
-        
-        // Don't stretch the stapler, apply an inverse scale on it
-        stapler.transform.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
+        myRenderer.transform.localScale = new Vector3(xStretch, yStretch, 1);
 
+        // Don't stretch the stapler, apply an inverse scale on it
+       // stapler.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
+        
 
         // Fall damage stuff
         if (wasGroundedLastFrame && !IsGrounded()) {
@@ -211,7 +241,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!wasGroundedLastFrame && IsGrounded()) {
-            //Debug.Log(startY - transform.position.y);
+            Debug.Log(transform.position.y);
             if (startY - transform.position.y > 2) {
                 DoFallDamage();
             }

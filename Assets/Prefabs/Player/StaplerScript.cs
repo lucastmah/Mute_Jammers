@@ -17,6 +17,7 @@ public class StaplerScript : MonoBehaviour
     private float myShake;
     private Vector3 defaultTransform;
     private Vector3 offsetVector;
+    int floatStep = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class StaplerScript : MonoBehaviour
 
     private void FixedUpdate() {
         openTimer--;
+        floatStep++;
 
         if (openTimer < 0) {
             myRenderer.sprite = close;
@@ -40,8 +42,10 @@ public class StaplerScript : MonoBehaviour
         }
         myShake *= .65f;
 
-        transform.position = transform.parent.gameObject.transform.position + offsetVector + new Vector3(UnityEngine.Random.Range(-myShake, myShake), UnityEngine.Random.Range(-myShake, myShake), 0);
+        Vector3 floatVector = new Vector3(0, Mathf.Sin(floatStep/24f) * .175f,0);
 
+        transform.position = floatVector + transform.parent.gameObject.transform.position + offsetVector + new Vector3(UnityEngine.Random.Range(-myShake, myShake), UnityEngine.Random.Range(-myShake, myShake), 0);
+        
     }
 
     public void FireStaple(int angle) {
@@ -60,7 +64,8 @@ public class StaplerScript : MonoBehaviour
     public void VisualUpdate(bool isFacingRight) {
         myRenderer.flipX = !isFacingRight;
 
-        offsetVector = new Vector3(.25f, 0, -1);
+        // This vector controls how far away the stapler is from the player's face
+        offsetVector = new Vector3(.35f, -.15f, -1);
         offsetVector.x *= (isFacingRight) ? 1 : -1;
     }
 }
