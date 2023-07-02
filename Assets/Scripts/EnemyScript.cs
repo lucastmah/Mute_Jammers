@@ -8,7 +8,9 @@ enum Monster
     Ranged = 2,
     Bomber = 3,
     Mage = 4,
-    Boss = 5
+    Boss = 5,
+    Floater = 6
+
 }
 
 public class EnemyScript : MonoBehaviour
@@ -22,18 +24,23 @@ public class EnemyScript : MonoBehaviour
     public int attack_damage;
     public float projectile_speed;
     public float attack_speed;
-    public int move_speed;
+    public float move_speed;
     public int enemy_type;
     public float attack_timer;
     public bool invincibility;
     public Vector3 direction;
 
+    // mage
+    int xDir = 0;
+    int yDir = 0;
+
     void Start()
     {
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
+        player = GameObject.Find("Player");
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // determine direction which direction enemy should face relative to player
         //Debug.Log("Playerpos = " + player.transform.position);
@@ -51,6 +58,19 @@ public class EnemyScript : MonoBehaviour
 
     private void Behaviour()
     {
+        if (enemy_type == (int)(Monster.Mage)) {
+            move_speed = 0.025f;
+            if (attack_timer < 0) {
+                xDir = (int)Mathf.Sign(player.transform.position.x - transform.position.x);
+                yDir = (int)Mathf.Sign(player.transform.position.y - transform.position.y);
+
+                attack_timer = 5;
+            }
+            attack_timer--;
+            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed;
+            return;
+        }
+
         // update attack timer
         if (attack_timer < enemy.attack_speed)
         {
@@ -135,6 +155,10 @@ public class EnemyScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        // Yeet the projectile
+        if (collision.gameObject != null)
+            Destroy(collision.gameObject);
     }
 
     private void TakeDamage(int damage)
