@@ -8,6 +8,7 @@ public class ProjectileBehavior : MonoBehaviour
     private SpriteRenderer SpriteRenderer;
 
     public Projectile ProjectileClass;
+    public GameObject FakeStapleClass;
 
     // Start is called before the first frame update
     void Start()
@@ -96,8 +97,14 @@ public class ProjectileBehavior : MonoBehaviour
         return new Vector2(vec.x / norm, vec.y / norm);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision) {
+        Destroy(gameObject);
+        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
     }
 }
