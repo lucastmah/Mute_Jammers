@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     bool isFacingRight = true;
 
+    // Player stats
     [SerializeField] private PlayerStats stats;
 
     // UPGRADE STATS
@@ -178,6 +179,19 @@ public class PlayerController : MonoBehaviour
         }
 
         myRenderer.size += new Vector2(xStretch, yStretch);//, 1);
-        Debug.Log(myRenderer.size);
+        //Debug.Log(myRenderer.size);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy Projectile"))
+        {
+            //TakeDamage(collision.gameObject.attack_damage);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        stats.health -= damage;
     }
 }

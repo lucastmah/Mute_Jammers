@@ -61,7 +61,7 @@ public class EnemyScript : MonoBehaviour
                 GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
                 int projDirection = (direction == Vector3.right) ? 1 : -1;
                 projectileInstance.transform.localScale = new Vector3(projDirection, 1, 1);
-                Debug.Log("Fire");
+                //Debug.Log("Fire");
                 attack_timer = 0;
             }
         }
@@ -75,10 +75,15 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player Projectile")
+        Debug.Log("hit");
+        if (collision.gameObject.CompareTag("Player Projectile"))
         {
-            //TakeDamage(player.health);
-            Destroy(gameObject);
+            TakeDamage(playerStats.attack);
+            Debug.Log(enemy.health);
+            if (enemy.health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         if (enemy_type == 3)
