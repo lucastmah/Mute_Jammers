@@ -233,6 +233,7 @@ public class EnemyScript : MonoBehaviour
                 playerStats.DamageTaken(enemy.attack_damage);
                 BomberDie();
                 DieEffects();
+                playerStats.KillEnemy(this.gameObject);
                 Destroy(gameObject);
             }
 
