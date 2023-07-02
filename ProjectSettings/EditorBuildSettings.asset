@@ -18,11 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: ee50e9e134e03704ea9977f2e4f25c16
   - enabled: 1
-    path: Assets/Scenes/NextStageScene.unity
+    path: Assets/Scenes/Actual Scenes/NextStageScene.unity
     guid: dc4913c2e2fa5a24793382dfc35a4ca2
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
     guid: 00788e1013ec3ed469f592012c335ff7
+  - enabled: 1
+    path: Assets/Scenes/Actual Scenes/Level0.unity
+    guid: 96d1fae5f07ce904a905fca812955db3
+  - enabled: 1
+    path: Assets/Scenes/Actual Scenes/Level1.unity
+    guid: dec54e1891594ab4789758582adb25f5
   - enabled: 1
     path: Assets/Scenes/LevelIntroText.unity
     guid: e08689d2470d3524b84d962916cf8fd6
