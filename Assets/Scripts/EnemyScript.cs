@@ -249,7 +249,7 @@ public class EnemyScript : MonoBehaviour
             //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
-                Instantiate(deathParticles, transform.position, Quaternion.identity);
+                Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
                 //playerStats.WinLevel();
                 playerStats.KillEnemy(this.gameObject);
                 Destroy(gameObject);
