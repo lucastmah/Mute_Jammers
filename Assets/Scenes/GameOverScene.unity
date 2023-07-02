@@ -837,8 +837,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 699430486}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 1543107502}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -967,7 +967,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1487389846
 RectTransform:
@@ -992,6 +992,87 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1543107501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.3512204
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8884968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.012212715
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187663822486582265, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209176740605996945, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787011882294603681, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1543107503}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+--- !u!114 &1543107502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7787011882294603681, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+  m_PrefabInstance: {fileID: 1543107501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddf0c7f91f454449b5255e9e9723c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1543107503 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3119857866513217516, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+  m_PrefabInstance: {fileID: 1543107501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1552107895
 GameObject:
   m_ObjectHideFlags: 0

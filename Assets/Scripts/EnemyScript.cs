@@ -131,7 +131,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision detected");    
+        //Debug.Log("collision detected");    
         //Debug.Log("enemy has hit " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -139,6 +139,7 @@ public class EnemyScript : MonoBehaviour
             {
                 if (attack_timer >= attack_speed)
                 {
+                    //Debug.Log("Melee enemy attacks player!");
                     playerStats.DamageTaken(enemy.attack_damage);
                 }
             }
@@ -169,7 +170,7 @@ public class EnemyScript : MonoBehaviour
             {
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
                 //playerStats.WinLevel();
-                playerStats.KillEnemy();
+                playerStats.KillEnemy(this.gameObject);
                 Destroy(gameObject);
             }
             Destroy(collision.gameObject);
