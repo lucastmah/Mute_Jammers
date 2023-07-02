@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5004772632565135581}
   - component: {fileID: 1156586862748445134}
   - component: {fileID: 1738532850176794067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EraserEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

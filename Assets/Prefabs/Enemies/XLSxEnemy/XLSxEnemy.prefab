@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5302688383100759605}
   - component: {fileID: 599201791833231935}
   - component: {fileID: 1347420216434515001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: XLSxEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

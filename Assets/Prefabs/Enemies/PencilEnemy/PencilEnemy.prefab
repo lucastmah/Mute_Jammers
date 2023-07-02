@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8060967813755415378}
   - component: {fileID: 518942989063333873}
   - component: {fileID: 7358198160602754989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PencilEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
