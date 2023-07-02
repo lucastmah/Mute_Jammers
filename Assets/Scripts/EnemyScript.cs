@@ -74,7 +74,7 @@ public class EnemyScript : MonoBehaviour
         // update attack timer
         if (attack_timer < enemy.attack_speed)
         {
-            attack_timer += Time.deltaTime;
+            attack_timer++;
         }
         // if Monster = boss, shoot 4 projectiles at a certain range
         if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
@@ -102,19 +102,19 @@ public class EnemyScript : MonoBehaviour
         }
 
         // if mage and close enough, start shooting when possible
-        else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Mage)
-        {
-            if (attack_timer >= enemy.attack_speed)
-            {
-                mageAttack.StartMageAttack(attack_damage, player);
-                attack_timer = 0;
-            }
-        }
+        //else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Mage)
+        //{
+        //    if (attack_timer >= enemy.attack_speed)
+        //    {
+        //        mageAttack.StartMageAttack(attack_damage, player);
+        //        attack_timer = 0;
+        //    }
+        //}
 
         // move towards player
         else
         {
-            transform.position = transform.position + enemy.move_speed * Time.deltaTime * direction;
+            transform.position = transform.position + enemy.move_speed  * direction;
             //Debug.Log("move");
         }
     }
