@@ -179,11 +179,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 7787011882294603681, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 379365560}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+--- !u!95 &379365560 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3119857866513217516, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+  m_PrefabInstance: {fileID: 379365559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &805512834
 PrefabInstance:
   m_ObjectHideFlags: 0
