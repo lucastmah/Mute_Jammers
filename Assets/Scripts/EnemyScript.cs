@@ -168,11 +168,12 @@ public class EnemyScript : MonoBehaviour
                 playerStats.WinLevel();
                 Destroy(gameObject);
             }
+            Destroy(collision.gameObject);
         }
 
         // Yeet the projectile
-        if (collision.gameObject != null)
-            Destroy(collision.gameObject);
+        //if (collision.gameObject != null)
+          //  Destroy(collision.gameObject);
     }
 
     private void TakeDamage(int damage)
