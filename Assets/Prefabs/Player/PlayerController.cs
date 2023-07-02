@@ -165,7 +165,8 @@ public class PlayerController : MonoBehaviour
         if (footstepTimer < 0 && IsGrounded()) {
             footstepTimer = footstepTime;
             PlayFootSound();
-            GameObject wFX = Instantiate(walkingFX, new Vector3(transform.position.x, transform.position.y - 1), new Quaternion());
+            GameObject wFX = Instantiate(walkingFX, new Vector3(transform.position.x, transform.position.y - 0.5f), new Quaternion());
+            wFX.transform.Rotate(90, 0, 180);
             Destroy(wFX, 1);
         }
 
