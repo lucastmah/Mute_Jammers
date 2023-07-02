@@ -33,10 +33,10 @@ public class IntroTextManager : MonoBehaviour
                 text = "The Executive Board thinks you've been stressed lately, so perhaps Vice President would be better for you.";
                 break;
             case 5:
-                text = "From Vice President to Senior Director… well, at least you’re still in a Senior position.";
+                text = "From Vice President to Senior Director... well, at least you're still in a Senior position.";
                 break;
             case 6:
-                text = "Microsoft Word is out, and apparently you’ve been slacking with it. Associate Director it is.";
+                text = "Microsoft Word is out, and apparently you've been slacking with it. Associate Director it is.";
                 break;
             case 7:
                 text = "What's so great about Excel? You don't get it, and coincidentally you're Senior Manager now.";
