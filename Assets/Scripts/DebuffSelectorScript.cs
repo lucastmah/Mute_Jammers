@@ -165,6 +165,12 @@ public class DebuffSelectorScript : MonoBehaviour
     public void RemoveBuff(int buttonIndex)
     {
         int buffIndex = debuffIndices[buttonIndex];
+        UnityEngine.UI.Button db0 = debuff0.GetComponent<UnityEngine.UI.Button>();
+        UnityEngine.UI.Button db1 = debuff1.GetComponent<UnityEngine.UI.Button>();
+        UnityEngine.UI.Button db2 = debuff2.GetComponent<UnityEngine.UI.Button>();
+        db0.interactable = false;
+        db1.interactable = false;
+        db2.interactable = false;
         switch (buffIndex)
         {
             case 0:

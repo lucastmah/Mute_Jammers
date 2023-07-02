@@ -11,10 +11,6 @@ public class IntroTextManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PowerupsList.GetInstance().hasDoubleJump)
-        {
-            Debug.Log("test");
-        }
         int currLevel = PowerupsList.GetInstance().currentLevel;
         string text = "Default";
         switch (currLevel)

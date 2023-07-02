@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerupsList
       objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasInvincibility
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_RootOrder
       value: 9

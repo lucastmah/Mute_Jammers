@@ -23,7 +23,7 @@ public class ProjectileBehavior : MonoBehaviour
         {
             homingBehavior(true);
         }*/
-        if (PowerupsList.GetInstance().hasHomingProjectiles)
+        if (PowerupsList.GetInstance().hasHomingProjectiles && ProjectileClass.isPlayerProjectile)
         {
             //Debug.Log("This is a homing projectile");
             ProjectileClass.Homing = true;
