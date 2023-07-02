@@ -317,8 +317,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level intro text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4e18e4f84197b734094e1e980622b390, type: 2}
+  m_sharedMaterial: {fileID: 7507866231093293746, guid: 4e18e4f84197b734094e1e980622b390, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -452,8 +452,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click anywhere to continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4e18e4f84197b734094e1e980622b390, type: 2}
+  m_sharedMaterial: {fileID: 7507866231093293746, guid: 4e18e4f84197b734094e1e980622b390, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 1006629578}
+    - target: {fileID: 7787011882294603681, guid: 62dbb81b41cd3164d88b21da8acbde49, type: 3}
+      propertyPath: transitionTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
