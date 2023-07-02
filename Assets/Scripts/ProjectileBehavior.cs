@@ -100,6 +100,10 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!ProjectileClass.isPlayerProjectile && collision.gameObject.CompareTag("Enemy"))
+        {
+            return;
+        }
         Destroy(gameObject);
         if (ProjectileClass.isPlayerProjectile)
         {
