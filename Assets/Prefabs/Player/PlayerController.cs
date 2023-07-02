@@ -292,7 +292,7 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = IsGrounded();
 
         myRenderer.enabled = true;
-        if (!isInHurtState) {
+        if (isInHurtState) {
             myRenderer.enabled = (recoveryTimer % 4) > 2;
         }
     }
