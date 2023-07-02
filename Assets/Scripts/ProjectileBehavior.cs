@@ -20,7 +20,6 @@ public class ProjectileBehavior : MonoBehaviour
         {
             homingBehavior(true);
         }
-        
     }
 
     // Update is called once per frame
@@ -42,8 +41,9 @@ public class ProjectileBehavior : MonoBehaviour
         }
         else
         {
-            Debug.Log(gameObject.transform.rotation);
-            transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * transform.localScale.x, transform.position.y);
+            float rot = gameObject.transform.rotation.z * Mathf.PI;
+            //Debug.Log(rot);
+            transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * Mathf.Cos(rot), transform.position.y + ProjectileClass.Speed * Mathf.Sin(rot));
         }
         
     }
