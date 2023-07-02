@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         stapler.VisualUpdate(isFacingRight);
+        stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
     }
 
     private bool CanJump() {
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         // Fire the staple
         if (Input.GetButtonDown("Fire1") && shootTimer < 0) {
-            int attackAngle = (isFacingRight) ? 1 : -1;
+            float attackAngle = (isFacingRight) ? 0 : 180;
             stapler.FireStaple(attackAngle, stats.attack);
             if (PowerupsList.GetInstance().hasDoubleProjectiles)
             {

@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour
         // Full health at start
         health = maxHealth;
 
+        levelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
+
         // Double attack damage (edit as needed)
         if (PowerupsList.GetInstance().hasBonusAtk == true)
         {
@@ -36,7 +38,7 @@ public class PlayerStats : MonoBehaviour
         if (PowerupsList.GetInstance().hasInvincibility == false)
         {
             health -= damage;
-            Debug.Log("Player has taken damage! :(");
+            Debug.Log("Player has taken damage! :( Current health: " + health);
 
             if (health <= 0)
             {
@@ -47,5 +49,16 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("you're invincible!");
         }
+    }
+
+    public void EnemyDeath()
+    {
+        levelController.OnEnemyDeath();
+    }
+
+    public void WinLevel()
+    {
+        // Delay for 3 seconds after killing last enemy before transitioning stages
+        Invoke("EnemyDeath", 3.0f);
     }
 }
