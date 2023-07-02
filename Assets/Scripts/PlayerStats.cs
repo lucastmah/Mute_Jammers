@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
     public FightLevelController levelController;
     public TextMeshProUGUI hpText;
     //public Text hpText;
-    public int maxHealth = 500;
+    public int maxHealth = 300;
     public int health;
     public int attack = 100;
 
