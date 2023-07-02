@@ -164,6 +164,9 @@ public class DebuffSelectorScript : MonoBehaviour
 
     public void RemoveBuff(int buttonIndex)
     {
+        PowerupsList p = PowerupsList.GetInstance();
+        p.Debuff();
+
         int buffIndex = debuffIndices[buttonIndex];
         switch (buffIndex)
         {

@@ -23,6 +23,7 @@ public class PowerupsList : MonoBehaviour
 
     [SerializeField] private AudioSource enemyDeathSource;
     [SerializeField] private AudioSource enemyHurtSource;
+    [SerializeField] private AudioSource debuffSource;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,12 @@ public class PowerupsList : MonoBehaviour
         powerupArray = new bool[] { hasInvincibility, hasDoubleJump, hasDoubleProjectiles, hasHomingProjectiles, 
             hasBonusAtk, hasBonusMvspd, hasBonusJumpHeight, hasAcceleration, hasNoFallDmg};
     }
+
+    public void Debuff() {
+        instance.debuffSource.Play();
+    }
+
+
 
     public void EnemyHurt() {
         instance.enemyHurtSource.Play();
