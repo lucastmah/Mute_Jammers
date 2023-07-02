@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public PowerupsList powerups;
+    
     public FightLevelController levelController;
     public int maxHealth = 500;
     public int health;
@@ -17,14 +17,14 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
 
         // Double health (edit as needed)
-        if (powerups.hasBonusMaxHp == true)
+        if (PowerupsList.GetInstance().hasBonusMaxHp == true)
         {
             health *= 2;
             Debug.Log("Player max health doubled!");
         }
 
         // Double attack damage (edit as needed)
-        if (powerups.hasBonusAtk == true)
+        if (PowerupsList.GetInstance().hasBonusAtk == true)
         {
             attack *= 2;
             Debug.Log("Player damage doubled!");
@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour
     void FixedUpdate()
     {
         // Passively regen HP after each frame if not full
-        if (powerups.hasRegen == true)
+        if (PowerupsList.GetInstance().hasRegen == true)
         {
             if (health < maxHealth)
             {
@@ -48,7 +48,7 @@ public class PlayerStats : MonoBehaviour
     public void DamageTaken(int damage)
     {
         // If invincibility is true, no health lost
-        if (powerups.hasInvincibility == false)
+        if (PowerupsList.GetInstance().hasInvincibility == false)
         {
             health -= damage;
             Debug.Log("Player has taken damage! :(");
