@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 6379405386727013629, guid: 7349c05a494f7bb41a93b8c9f0612076, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 78f87878510e08b498beda6c247846a8, type: 3}
+      objectReference: {fileID: 8300000, guid: a6d2b160a5c39de4d85699bdc4bc2529, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -199,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 5561954152544811649, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_Name
       value: PowerupsList
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031779444165165569, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
+      propertyPath: hasInvincibility
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_RootOrder
@@ -602,7 +606,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
