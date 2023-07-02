@@ -30,6 +30,7 @@ public class EnemyScript : MonoBehaviour
     public bool invincibility;
     public Vector3 direction;
     [SerializeField] public GameObject deathParticles;
+    //private FightLevelController fightLevelController;
 
     // mage
     int xDir = 0;
@@ -40,6 +41,7 @@ public class EnemyScript : MonoBehaviour
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+        //fightLevelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -121,7 +123,7 @@ public class EnemyScript : MonoBehaviour
         // move towards player
         else
         {
-            transform.position = transform.position + enemy.move_speed  * direction;
+            transform.position = transform.position + enemy.move_speed  * direction * Time.deltaTime;
             //Debug.Log("move");
         }
     }
@@ -165,7 +167,8 @@ public class EnemyScript : MonoBehaviour
             if (enemy.health <= 0)
             {
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
-                playerStats.WinLevel();
+                //playerStats.WinLevel();
+                playerStats.KillEnemy();
                 Destroy(gameObject);
             }
             Destroy(collision.gameObject);

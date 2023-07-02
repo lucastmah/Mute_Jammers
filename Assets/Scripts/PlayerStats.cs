@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour
 
             if (health <= 0)
             {
-                levelController.OnPlayerDeath();
+                levelController.LoseLevel();
             }
         }
         else
@@ -51,14 +51,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void EnemyDeath()
+    public void KillEnemy()
     {
-        levelController.OnEnemyDeath();
-    }
-
-    public void WinLevel()
-    {
-        // Delay for 3 seconds after killing last enemy before transitioning stages
-        Invoke("EnemyDeath", 3.0f);
+        levelController.KillEnemy();
     }
 }
