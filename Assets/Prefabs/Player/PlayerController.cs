@@ -73,6 +73,22 @@ public class PlayerController : MonoBehaviour
     {
         stapler.VisualUpdate(isFacingRight);
         stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+
+        // set up stuff
+        PowerupsList p = PowerupsList.GetInstance();
+        takesFallDamage = !p.hasNoFallDmg;
+        if (p.hasDoubleJump) {
+            MaxJumps++;
+        }
+        if (!p.hasBonusMvspd) {
+            moveSpeed -= 1.5f;
+        }
+        if (!p.hasAcceleration) {
+            acceleration *= 0.75f;
+        }
+        if (!p.hasBonusJumpHeight) {
+            jumpSpeed -= 2;
+        }
     }
 
     private bool CanJump() {
