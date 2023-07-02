@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6912448620246036529}
   - component: {fileID: 3760501824161025710}
   m_Layer: 9
-  m_Name: EnemyProjectile
+  m_Name: XLSxProjectile
   m_TagString: Enemy Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
