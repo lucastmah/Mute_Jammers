@@ -126,7 +126,9 @@ public class FightLevelController : MonoBehaviour
         }
         else if (numPowerupsLeft == 0)
         {
-            ll.LoadScene("Level10");
+            //ll.LoadScene("Level10");
+            PowerupsList.GetInstance().currentLevel = 11;
+            ll.LoadScene("LevelIntroText");
             // ll.LoadScene("VictoryScene");
         }
         else
