@@ -6,7 +6,7 @@ public class FightLevelController : MonoBehaviour
 {
     //public GameObject player;
     //list of enemy prefabs for the levels in order 1, 2, 3, ... 
-    public GameObject enemy;
+    public GameObject[] enemyOptions;
     private List<GameObject> enemies = new();
     public int numSpawnsAtOnce = 1;
     public int delayBtwnSpawns = 3;
@@ -32,7 +32,8 @@ public class FightLevelController : MonoBehaviour
             {
                 int xPos = Random.Range(-4, 4);
                 int yPos = Random.Range(-1, 2);
-                GameObject temp = Instantiate(enemy, new Vector3(xPos, yPos, 0), Quaternion.identity);
+                int enemyIndex = Random.Range(0, enemyOptions.Length);
+                GameObject temp = Instantiate(enemyOptions[enemyIndex], new Vector3(xPos, yPos, 0), Quaternion.identity);
                 enemies.Add(temp);
             }
             yield return new WaitForSeconds(delayBtwnSpawns);

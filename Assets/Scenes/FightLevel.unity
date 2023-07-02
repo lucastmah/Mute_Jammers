@@ -1514,9 +1514,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04676b5da924ca14a829b36aaafaca34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7748234186986416713, guid: 48a728ea7c5a06b4ba65124212051c00, type: 3}
+  enemyOptions:
+  - {fileID: 7748234186986416713, guid: 48a728ea7c5a06b4ba65124212051c00, type: 3}
+  - {fileID: 6020999201356715855, guid: 652156b5c0642864dae0606e5862d0d6, type: 3}
+  - {fileID: 977187963201815704, guid: e88d62a74d22fd5459cb35c7fe978ea1, type: 3}
   numSpawnsAtOnce: 1
   delayBtwnSpawns: 3
+  numEnemiesKilled: 0
+  targetKills: 10
 --- !u!4 &1822476579
 Transform:
   m_ObjectHideFlags: 0

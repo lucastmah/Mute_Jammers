@@ -79,7 +79,8 @@ public class EnemyScript : MonoBehaviour
         // update attack timer
         if (attack_timer < enemy.attack_speed)
         {
-            attack_timer++;
+            //attack_timer++;
+            attack_timer += Time.deltaTime;
         }
         // if Monster = boss, shoot 4 projectiles at a certain range
         if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
