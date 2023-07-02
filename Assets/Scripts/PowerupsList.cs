@@ -6,6 +6,7 @@ public class PowerupsList : MonoBehaviour
 {
     //singleton class to store player powerups left 
     static PowerupsList instance;
+
     public bool hasInvincibility = true;
     public bool hasDoubleJump = true;
     public bool hasDoubleProjectiles = true;

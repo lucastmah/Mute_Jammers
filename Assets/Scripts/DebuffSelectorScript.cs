@@ -198,6 +198,6 @@ public class DebuffSelectorScript : MonoBehaviour
                 break;
 
         }
-        SceneLoader.LoadScene("FightLevel");
+        SceneLoader.LoadScene("LevelIntroText");
     }
 }
