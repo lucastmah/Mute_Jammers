@@ -31,8 +31,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Passively regen HP after each frame if not full
         if (powerups.hasRegen == true)
