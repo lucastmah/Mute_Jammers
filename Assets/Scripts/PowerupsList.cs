@@ -8,17 +8,13 @@ public class PowerupsList : MonoBehaviour
     static PowerupsList instance;
     public bool hasInvincibility = true;
     public bool hasDoubleJump = true;
-    public bool hasBiggerProjectiles = true;
     public bool hasDoubleProjectiles = true;
     public bool hasHomingProjectiles = true;
     public bool hasBonusAtk = true;
     public bool hasBonusMvspd = true;
-    public bool hasBonusMaxHp = true;
     public bool hasBonusJumpHeight = true;
-    public bool hasRegen = true;
     public bool hasAcceleration = true;
     public bool hasNoFallDmg = true;
-    public bool hasUnlimitedAmmo = true;
 
     public int currentLevel = 1;
 
@@ -36,10 +32,8 @@ public class PowerupsList : MonoBehaviour
         }
         instance = this;
         GameObject.DontDestroyOnLoad(this.gameObject);
-        powerupArray = new bool[] { hasInvincibility, hasDoubleJump, 
-            hasBiggerProjectiles, hasDoubleProjectiles, hasHomingProjectiles, hasBonusAtk, 
-            hasBonusMvspd, hasBonusMaxHp, hasBonusJumpHeight, hasRegen, hasAcceleration, 
-            hasNoFallDmg, hasUnlimitedAmmo};
+        powerupArray = new bool[] { hasInvincibility, hasDoubleJump, hasDoubleProjectiles, hasHomingProjectiles, 
+            hasBonusAtk, hasBonusMvspd, hasBonusJumpHeight, hasAcceleration, hasNoFallDmg};
     }
 
     public static PowerupsList GetInstance()
@@ -49,10 +43,8 @@ public class PowerupsList : MonoBehaviour
 
     public bool[] GetPowerupArray()
     {
-        powerupArray = new bool[] { hasInvincibility, hasDoubleJump,
-            hasBiggerProjectiles, hasDoubleProjectiles, hasHomingProjectiles, hasBonusAtk,
-            hasBonusMvspd, hasBonusMaxHp, hasBonusJumpHeight, hasRegen, hasAcceleration,
-            hasNoFallDmg, hasUnlimitedAmmo};
+        powerupArray = new bool[] { hasInvincibility, hasDoubleJump, hasDoubleProjectiles, hasHomingProjectiles,
+            hasBonusAtk, hasBonusMvspd, hasBonusJumpHeight, hasAcceleration, hasNoFallDmg};
         return powerupArray;
     }
 }
