@@ -16,13 +16,6 @@ public class PlayerStats : MonoBehaviour
         // Full health at start
         health = maxHealth;
 
-        // Double health (edit as needed)
-        if (PowerupsList.GetInstance().hasBonusMaxHp == true)
-        {
-            health *= 2;
-            Debug.Log("Player max health doubled!");
-        }
-
         // Double attack damage (edit as needed)
         if (PowerupsList.GetInstance().hasBonusAtk == true)
         {
@@ -33,15 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Passively regen HP after each frame if not full
-        if (PowerupsList.GetInstance().hasRegen == true)
-        {
-            if (health < maxHealth)
-            {
-                health += 1;
-                Debug.Log("Player has regenerated 1 HP!");
-            }
-        }
+
     }
 
     // Take damage from enemy/boss
