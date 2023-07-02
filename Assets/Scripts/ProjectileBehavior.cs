@@ -108,7 +108,7 @@ public class ProjectileBehavior : MonoBehaviour
         if (ProjectileClass.isPlayerProjectile)
         {
             GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
-            Destroy(t, 4);
+            Destroy(t, 0.5f);
         }
     }
 }
