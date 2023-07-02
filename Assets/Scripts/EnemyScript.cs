@@ -31,6 +31,9 @@ public class EnemyScript : MonoBehaviour
     public Vector3 direction;
     public Vector3 boss_direction;
     [SerializeField] public GameObject deathParticles;
+
+    public GameObject hitPrefab;
+    public GameObject deathPrefab;
     //private FightLevelController fightLevelController;
 
     public SpriteRenderer sprite;
@@ -41,6 +44,8 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+
+
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
@@ -57,7 +62,6 @@ public class EnemyScript : MonoBehaviour
 
         // Boss movement is separate from other enemies b/c independent of player location
         Invoke("BossMovement", 0.5f);
-
         //fightLevelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
     }
     // Update is called once per frame
@@ -228,6 +232,8 @@ public class EnemyScript : MonoBehaviour
                 //Debug.Log("you've been bombed");
                 Debug.Log("BOOM!");
                 playerStats.DamageTaken(enemy.attack_damage);
+                BomberDie();
+                DieEffects();
                 Destroy(gameObject);
             }
 
@@ -236,6 +242,10 @@ public class EnemyScript : MonoBehaviour
                 playerStats.DamageTaken(enemy.attack_damage);
             }
         }
+    }
+
+    private void BomberDie() {
+   
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -250,7 +260,8 @@ public class EnemyScript : MonoBehaviour
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
                 //playerStats.WinLevel();
                 playerStats.KillEnemy(this.gameObject);
-                Destroy(gameObject);
+                DieEffects();
+                Destroy(gameObject,2f);
             }
             Destroy(collision.gameObject);
         }
@@ -263,5 +274,22 @@ public class EnemyScript : MonoBehaviour
     private void TakeDamage(int damage)
     {
         enemy.health -= damage;
+        PlayHit();
+    }
+
+    private void DieEffects() {
+        PlayDeath();
+    }
+
+    void PlayDeath() {
+        //GameObject wFX = Instantiate(deathPrefab, new Vector3(transform.position.x, transform.position.y - 1), new Quaternion());
+        PowerupsList p = PowerupsList.GetInstance();
+        p.EnemyDie();
+    }
+
+    void PlayHit() {
+        PowerupsList p = PowerupsList.GetInstance();
+        p.EnemyHurt();
+        // GameObject wFX = Instantiate(hitPrefab, new Vector3(transform.position.x, transform.position.y - 1), new Quaternion());
     }
 }

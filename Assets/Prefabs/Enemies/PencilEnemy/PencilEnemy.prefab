@@ -184,4 +184,8 @@ MonoBehaviour:
   attack_timer: 0
   invincibility: 0
   direction: {x: 0, y: 0, z: 0}
+  boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
+  hitPrefab: {fileID: 2382820826811741974, guid: 63535b586234d7646baa1e434cff12e7, type: 3}
+  deathPrefab: {fileID: 989315475031885032, guid: b1c211c8846c2d145a5389080cb3fbcc, type: 3}
+  sprite: {fileID: 3503617557124354681}

@@ -21,6 +21,8 @@ public class PowerupsList : MonoBehaviour
 
     private bool[] powerupArray;
 
+    [SerializeField] private AudioSource enemyDeathSource;
+    [SerializeField] private AudioSource enemyHurtSource;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,14 @@ public class PowerupsList : MonoBehaviour
         GameObject.DontDestroyOnLoad(this.gameObject);
         powerupArray = new bool[] { hasInvincibility, hasDoubleJump, hasDoubleProjectiles, hasHomingProjectiles, 
             hasBonusAtk, hasBonusMvspd, hasBonusJumpHeight, hasAcceleration, hasNoFallDmg};
+    }
+
+    public void EnemyHurt() {
+        instance.enemyHurtSource.Play();
+    }
+
+    public void EnemyDie() {
+        instance.enemyDeathSource.Play();
     }
 
     public static PowerupsList GetInstance()

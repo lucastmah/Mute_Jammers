@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool CanJump() {
-        return ((IsGrounded() || jumpBufferTimer > 0) && availableJumps > 0);
+        return (((IsGrounded() || jumpBufferTimer > 0) && availableJumps == 1) || (availableJumps > 1));
     }
 
     private bool IsGrounded() {
