@@ -50,15 +50,17 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
 
-        // Get initial player direction for boss to follow
-        if (player.transform.position.x < transform.position.x)
+        if (enemy_type == (int)Monster.Boss)
         {
-            boss_direction = Vector3.left;
-        }
-        else
-        {
-            boss_direction = Vector3.right;
-        }
+            // Get initial player direction for boss to follow
+            if (player.transform.position.x < transform.position.x)
+            {
+                boss_direction = Vector3.left;
+            }
+            else
+            {
+                boss_direction = Vector3.right;
+            }
 
         // Boss movement is separate from other enemies b/c independent of player location
         Invoke("BossMovement", 0.5f);
@@ -147,7 +149,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Debug.Log("active");
         if (enemy_type == (int)(Monster.Floater)) {
-            move_speed = 0.025f;
+            //move_speed = 0.025f;
             if (attack_timer < 0) {
                 xDir = (int)Mathf.Sign(player.transform.position.x - transform.position.x);
                 yDir = (int)Mathf.Sign(player.transform.position.y - transform.position.y);
@@ -155,7 +157,7 @@ public class EnemyScript : MonoBehaviour
                 attack_timer = 5;
             }
             attack_timer--;
-            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed;
+            transform.transform.position += new Vector3(xDir, yDir, 0) * move_speed * Time.deltaTime;
             return;
         }
 
@@ -257,7 +259,7 @@ public class EnemyScript : MonoBehaviour
             //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
-                Instantiate(deathParticles, transform.position, Quaternion.identity);
+                Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
                 //playerStats.WinLevel();
                 playerStats.KillEnemy(this.gameObject);
                 DieEffects();

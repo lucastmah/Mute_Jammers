@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelController: {fileID: 0}
-  maxHealth: 500
+  hpText: {fileID: 0}
+  maxHealth: 100
   health: 0
   attack: 100

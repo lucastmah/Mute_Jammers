@@ -15,9 +15,9 @@ public class DebuffSelectorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        debuffIndices = new int[3];
         //set text on the 3 buttons based on the debuffs assigned to each 
-        SortedSet<int> validDebuffIndices = new SortedSet<int>();
+        debuffIndices = new int[3];
+        SortedSet<int> validDebuffIndices = new();
         PowerupsList list = PowerupsList.GetInstance();
         if (list.hasInvincibility)
         {
@@ -168,6 +168,12 @@ public class DebuffSelectorScript : MonoBehaviour
         p.Debuff();
 
         int buffIndex = debuffIndices[buttonIndex];
+        UnityEngine.UI.Button db0 = debuff0.GetComponent<UnityEngine.UI.Button>();
+        UnityEngine.UI.Button db1 = debuff1.GetComponent<UnityEngine.UI.Button>();
+        UnityEngine.UI.Button db2 = debuff2.GetComponent<UnityEngine.UI.Button>();
+        db0.interactable = false;
+        db1.interactable = false;
+        db2.interactable = false;
         switch (buffIndex)
         {
             case 0:
@@ -198,7 +204,7 @@ public class DebuffSelectorScript : MonoBehaviour
                 PowerupsList.GetInstance().hasNoFallDmg = false;
                 break;
             default:
-                Debug.LogWarning("RemoveBuff: Invalid index. Valid range is [0,12]; value passed = " + buffIndex);
+                Debug.LogWarning("RemoveBuff: Invalid index. Valid range is [0,8]; value passed = " + buffIndex);
                 break;
 
         }
