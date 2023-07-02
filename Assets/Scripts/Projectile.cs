@@ -38,6 +38,14 @@ public class Projectile {
     public void setSpeed(Vector2 speed)
     {
         currentSpeed = speed;
+        if(Mathf.Abs(currentSpeed.x) > this.Speed)
+        {
+            currentSpeed.x = this.Speed * ((currentSpeed.x > 0) ? 1 : -1);
+        }
+        if (Mathf.Abs(currentSpeed.y) > this.Speed)
+        {
+            currentSpeed.y = this.Speed * ((currentSpeed.y > 0) ? 1 : -1);
+        }
     }
 
     public Vector2 getCurrentSpeed()
