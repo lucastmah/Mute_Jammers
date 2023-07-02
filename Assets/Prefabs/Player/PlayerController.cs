@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip[] walkingSounds;
     [SerializeField] private AudioSource walkingSource;
+    [SerializeField] private GameObject walkingFX;
 
     int footstepTimer;
     [SerializeField] private int footstepTime = 30;
@@ -98,6 +99,8 @@ public class PlayerController : MonoBehaviour
         // Buffer our jump inputs - if we press jump right before landing we'll still jump
         if (Input.GetButtonDown("Jump")) {
             jumpPressedTimer = 20;
+            GameObject wFX = Instantiate(walkingFX, new Vector3(transform.position.x, transform.position.y - 1), new Quaternion());
+            Destroy(wFX, 1);
         }
 
 
@@ -146,6 +149,8 @@ public class PlayerController : MonoBehaviour
         if (footstepTimer < 0 && IsGrounded()) {
             footstepTimer = footstepTime;
             PlayFootSound();
+            GameObject wFX = Instantiate(walkingFX, new Vector3(transform.position.x, transform.position.y - 1), new Quaternion());
+            Destroy(wFX, 1);
         }
 
         // Jump buffering
