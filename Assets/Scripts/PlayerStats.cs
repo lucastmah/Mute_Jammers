@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     
     public FightLevelController levelController;
-    public TMPro.TextMeshPro hpText;
+    public TextMeshProUGUI hpText;
+    //public Text hpText;
     public int maxHealth = 500;
     public int health;
     public int attack = 100;
@@ -20,7 +22,7 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
 
         levelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
-        hpText = GameObject.Find("hpText").GetComponent<TMPro.TextMeshPro>();
+        //hpText = GameObject.Find("hpText").GetComponent<TextMeshProUGUI>();
 
         // Double attack damage (edit as needed)
         if (PowerupsList.GetInstance().hasBonusAtk == true)
@@ -34,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (hpText != null)
         {
-            hpText.text = "" + health;
+            hpText.text = health.ToString();
         }
     }
 
