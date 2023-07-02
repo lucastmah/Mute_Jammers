@@ -33,6 +33,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] public GameObject deathParticles;
     //private FightLevelController fightLevelController;
 
+    public SpriteRenderer sprite;
+
     // mage
     int xDir = 0;
     int yDir = 0;
@@ -87,11 +89,13 @@ public class EnemyScript : MonoBehaviour
         if (direction == Vector3.right)
         {
             direction = Vector3.left;
+            sprite.flipX = true;
         }
 
         else
         {
             direction = Vector3.right;
+            sprite.flipX = false;
         }
 
         // Call movement function again after delay
