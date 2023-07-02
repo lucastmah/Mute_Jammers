@@ -17,6 +17,9 @@ public class FightLevelController : MonoBehaviour
 
     private float radius = 1f;
 
+    public AudioSource audio;
+    public AudioSource currentBGM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,11 +101,14 @@ public class FightLevelController : MonoBehaviour
             }
         }
         enemies.Clear();
+        currentBGM.Pause();
+        audio.Play(0);
         Invoke("WinLevel", 1.5f);
     }
 
     public void WinLevel()
     {   
+        // audio.Pause();
         bool[] powerupArray = PowerupsList.GetInstance().GetPowerupArray();
         int numPowerupsLeft = 0;
         foreach (bool powerup in powerupArray) {

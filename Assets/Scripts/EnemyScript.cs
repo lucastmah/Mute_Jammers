@@ -217,6 +217,7 @@ public class EnemyScript : MonoBehaviour
         //Debug.Log("enemy has hit " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("hit player");
             if (enemy_type == (int)Monster.Melee)
             {
                 if (attack_timer >= attack_speed)
@@ -234,6 +235,7 @@ public class EnemyScript : MonoBehaviour
                 BomberDie();
                 DieEffects();
                 playerStats.KillEnemy(this.gameObject);
+                Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
                 Destroy(gameObject);
             }
 
