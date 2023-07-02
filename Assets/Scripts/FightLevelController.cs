@@ -98,7 +98,7 @@ public class FightLevelController : MonoBehaviour
             }
         }
         enemies.Clear();
-        Invoke("WinLevel", 3);
+        Invoke("WinLevel", 1.5f);
     }
 
     public void WinLevel()
