@@ -19,8 +19,23 @@ public class FightLevelController : MonoBehaviour
 
     public void OnEnemyDeath()
     {
-        PowerupsList.GetInstance().currentLevel += 1;
-        SceneLoader.LoadScene("NextStageScene");
+        bool[] powerupArray = PowerupsList.GetInstance().GetPowerupArray();
+        int numPowerupsLeft = 0;
+        foreach (bool powerup in powerupArray) {
+            if (powerup)
+            {
+                numPowerupsLeft++;
+            }
+        }
+        if (numPowerupsLeft == 0)
+        {
+            SceneLoader.LoadScene("VictoryScene");
+        }
+        else
+        {
+            PowerupsList.GetInstance().currentLevel += 1;
+            SceneLoader.LoadScene("NextStageScene");
+        }
     }
 
     public void OnPlayerDeath()
