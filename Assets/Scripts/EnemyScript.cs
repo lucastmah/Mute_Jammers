@@ -29,6 +29,7 @@ public class EnemyScript : MonoBehaviour
     public float attack_timer;
     public bool invincibility;
     public Vector3 direction;
+    public Vector3 boss_direction;
     [SerializeField] public GameObject deathParticles;
     //private FightLevelController fightLevelController;
 
@@ -41,6 +42,20 @@ public class EnemyScript : MonoBehaviour
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+
+        // Get initial player direction for boss to follow
+        if (player.transform.position.x < transform.position.x)
+        {
+            boss_direction = Vector3.left;
+        }
+        else
+        {
+            boss_direction = Vector3.right;
+        }
+
+        // Boss movement is separate from other enemies b/c independent of player location
+        Invoke("BossMovement", 0.5f);
+
         //fightLevelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
     }
     // Update is called once per frame
@@ -48,16 +63,39 @@ public class EnemyScript : MonoBehaviour
     {
         // determine direction which direction enemy should face relative to player
         //Debug.Log("Playerpos = " + player.transform.position);
-        if (player.transform.position.x < transform.position.x)
+        if (enemy_type != (int)Monster.Boss)
+        {
+            if (player.transform.position.x < transform.position.x)
+            {
+                direction = Vector3.left;
+            }
+            else
+            {
+                direction = Vector3.right;
+            }
+        }
+
+        // determine attacking behaviour
+        Behaviour();
+    }
+
+    private void BossMovement()
+    {
+        // Boss changes directions every 3-5 seconds
+        float movement_delay = Random.Range(3, 6);
+
+        if (direction == Vector3.right)
         {
             direction = Vector3.left;
         }
+
         else
         {
             direction = Vector3.right;
         }
-        // determine attacking behaviour
-        Behaviour();
+
+        // Call movement function again after 3-5 seconds
+        Invoke("BossMovement", movement_delay);
     }
 
     private void Behaviour()
@@ -83,22 +121,22 @@ public class EnemyScript : MonoBehaviour
             attack_timer += Time.deltaTime;
         }
         // if Monster = boss, shoot 4 projectiles at a certain range
-        if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
-        {
-            if (attack_timer >= enemy.attack_speed)
-            {
-                GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                projectileInstance.transform.Rotate(0, 0, 0);
-                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                projectileInstance.transform.Rotate(0, 0, 60);
-                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                projectileInstance.transform.Rotate(0, 0, 120);
-                projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
-                projectileInstance.transform.Rotate(0, 0, 180);
-                //Debug.Log("Fire");
-                attack_timer = 0;
-            }
-        }
+        // if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
+        // {
+        //     if (attack_timer >= enemy.attack_speed)
+        //     {
+        //         GameObject projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+        //         projectileInstance.transform.Rotate(0, 0, 0);
+        //         projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+        //         projectileInstance.transform.Rotate(0, 0, 60);
+        //         projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+        //         projectileInstance.transform.Rotate(0, 0, 120);
+        //         projectileInstance = Instantiate(projectile, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+        //         projectileInstance.transform.Rotate(0, 0, 180);
+        //         //Debug.Log("Fire");
+        //         attack_timer = 0;
+        //     }
+        // }
         // if Monster = ranged and close enough, start shooting when possible
         else if (Mathf.Abs(player.transform.position.x - transform.position.x) < 2 && enemy_type == (int)Monster.Ranged)
         {
