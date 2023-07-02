@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2358745010705895128}
   - component: {fileID: 596112537920825103}
   m_Layer: 0
-  m_Name: EnemyMan
-  m_TagString: Untagged
+  m_Name: EnemyRanged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   projectile: {fileID: 1749251704239645322, guid: 38f08c74f8ad6458e8e1a592685f9b1b, type: 3}
   health: 500
-  attack_damage: 1
+  attack_damage: 20
   projectile_speed: 1
   attack_speed: 1
   move_speed: 1

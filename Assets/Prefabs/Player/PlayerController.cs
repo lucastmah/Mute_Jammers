@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour
         recoveryTimer = recoveryTime;
     }
 
-        private void DoFallDamage() {
+    private void DoFallDamage() {
         if (!takesFallDamage)
             return;
 
