@@ -10,6 +10,7 @@ public class DebuffSelectorScript : MonoBehaviour
     public GameObject debuff1;
     public GameObject debuff2;
     private int[] debuffIndices;
+    public LevelLoader ll;
 
     // Start is called before the first frame update
     void Start()
@@ -198,6 +199,6 @@ public class DebuffSelectorScript : MonoBehaviour
                 break;
 
         }
-        SceneLoader.LoadScene("LevelIntroText");
+        ll.LoadScene("LevelIntroText");
     }
 }

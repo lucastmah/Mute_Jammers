@@ -51,8 +51,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void KillEnemy()
+    public void KillEnemy(GameObject enemy)
     {
-        levelController.KillEnemy();
+        levelController.KillEnemy(enemy);
     }
 }

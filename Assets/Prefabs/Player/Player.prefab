@@ -572,6 +572,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c749c5ffb5175d949907fff548101a94, type: 3}
   - {fileID: 8300000, guid: 4523f04c6a56fc8488ba38036f04b4fd, type: 3}
   walkingSource: {fileID: 5471490593550456720}
+  walkingFX: {fileID: 4872580836121644907, guid: bea1ffe88c2a57349b16a254ce02399e, type: 3}
   footstepTime: 50
   stapler: {fileID: 5378654151038100002}
   playerJumpSource: {fileID: 1143736347645302901}

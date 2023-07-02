@@ -4,48 +4,51 @@ using UnityEngine;
 
 public class FightSceneLoader : MonoBehaviour
 {
+    public LevelLoader ll;
     public void LoadFightScene()
     {
-        int currLevel = PowerupsList.GetInstance().currentLevel;
-        switch (currLevel)
+        int currLevel = PowerupsList.GetInstance().currentLevel - 1;
+        string levelString = "Level" + currLevel;
+        ll.LoadScene(levelString);
+        /*switch (currLevel)
         {
             case 1:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 2:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 3:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 4:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 5:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 6:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 7:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 8:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 9:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 10:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             case 11:
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
             default:
                 Debug.LogWarning("FightSceneLoader.Start: Invalid scene index passed. Valid range [1,11], passed value = " + currLevel);
-                SceneLoader.LoadScene("");
+                ll.LoadScene("");
                 break;
-        }
+        }*/
     }
 }

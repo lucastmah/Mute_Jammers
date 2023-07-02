@@ -13,6 +13,7 @@ public class FightLevelController : MonoBehaviour
 
     public int numEnemiesKilled = 0;
     public int targetKills = 10;
+    private LevelLoader ll;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class FightLevelController : MonoBehaviour
             int currLevelIndex = Mathf.Max(0, PowerupsList.GetInstance().currentLevel - 1);
             Instantiate(enemies[currLevelIndex], new Vector3(7, -3, 0), Quaternion.identity);
         }*/
+        ll = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
         StartCoroutine(SpawnEnemies(numSpawnsAtOnce, delayBtwnSpawns));
     }
 
@@ -30,18 +32,23 @@ public class FightLevelController : MonoBehaviour
         {
             for(int i = 0; i < numSpawnsAtOnce; i++)
             {
-                int xPos = Random.Range(-4, 4);
-                int yPos = Random.Range(-1, 2);
+                int xPos = Random.Range(-7, 1);
+                int yPos = Random.Range(1, 5);
                 int enemyIndex = Random.Range(0, enemyOptions.Length - 1);
-                GameObject temp = Instantiate(enemyOptions[enemyIndex], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                enemies.Add(temp);
+                if (Mathf.Abs(enemyIndex) < enemyOptions.Length)
+                {
+                    GameObject temp = Instantiate(enemyOptions[enemyIndex], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    enemies.Add(temp);
+                }
             }
             yield return new WaitForSeconds(delayBtwnSpawns);
         }
     }
 
-    public void KillEnemy()
+    public void KillEnemy(GameObject enemy)
     {
+        enemies.Remove(enemy);
+        Destroy(enemy);
         numEnemiesKilled++;
         if (numEnemiesKilled == targetKills)
         {
@@ -74,17 +81,17 @@ public class FightLevelController : MonoBehaviour
         }
         if (numPowerupsLeft == 0)
         {
-            SceneLoader.LoadScene("VictoryScene");
+            ll.LoadScene("VictoryScene");
         }
         else
         {
             PowerupsList.GetInstance().currentLevel += 1;
-            SceneLoader.LoadScene("NextStageScene");
+            ll.LoadScene("NextStageScene");
         }
     }
 
     public void LoseLevel()
     {
-        SceneLoader.LoadScene("GameOverScene");
+        ll.LoadScene("GameOverScene");
     }
 }
