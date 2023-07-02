@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4996153457076292269}
   - component: {fileID: 5719549678797818077}
   - component: {fileID: 6061709271453840677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Kid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,9 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
+  hitPrefab: {fileID: 0}
+  deathPrefab: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!50 &4996153457076292269
 Rigidbody2D:
   serializedVersion: 4
@@ -157,7 +160,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 136
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
