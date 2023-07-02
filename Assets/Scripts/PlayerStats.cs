@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void LoseGame()
+    public void WinLevel()
     {
         levelController.OnEnemyDeath();
     }

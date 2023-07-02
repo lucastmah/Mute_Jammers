@@ -158,7 +158,7 @@ public class EnemyScript : MonoBehaviour
             //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
-                playerStats.LoseGame();
+                playerStats.WinLevel();
                 Destroy(gameObject);
             }
         }
