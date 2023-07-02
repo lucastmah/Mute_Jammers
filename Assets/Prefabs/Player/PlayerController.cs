@@ -270,7 +270,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Hurt(int damageAmt) {
-        if (recoveryTimer > 0)
+        if (recoveryTimer > recoveryTime*0.75f)
             return;
 
         stats.DamageTaken(damageAmt);
