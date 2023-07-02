@@ -1323,6 +1323,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 977187963201815704, guid: e88d62a74d22fd5459cb35c7fe978ea1, type: 3}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1285737178926054186, guid: 647eb7dd825b08c4bae2c8f69623edf7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 99999
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 50000
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -176,8 +176,8 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   projectile: {fileID: 1749251704239645322, guid: 38f08c74f8ad6458e8e1a592685f9b1b, type: 3}
   mageAttack: {fileID: 0}
-  health: 500
-  attack_damage: 20
+  health: 200
+  attack_damage: 25
   projectile_speed: 1
   attack_speed: 1
   move_speed: 1
@@ -185,6 +185,7 @@ MonoBehaviour:
   attack_timer: 0
   invincibility: 0
   direction: {x: 0, y: 0, z: 0}
+  boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
 --- !u!95 &6871239953565697805
 Animator:
