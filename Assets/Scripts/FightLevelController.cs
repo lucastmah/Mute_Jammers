@@ -108,7 +108,7 @@ public class FightLevelController : MonoBehaviour
 
     public void WinLevel()
     {   
-        audio.Pause();
+        // audio.Pause();
         bool[] powerupArray = PowerupsList.GetInstance().GetPowerupArray();
         int numPowerupsLeft = 0;
         foreach (bool powerup in powerupArray) {
