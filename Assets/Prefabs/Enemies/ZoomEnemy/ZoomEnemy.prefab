@@ -186,6 +186,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
+  hitParticles: {fileID: 5906052992081726957, guid: a835c89b64664447a8361714fdfc7f04, type: 3}
+  bomberParticles: {fileID: 5906052992081726957, guid: ceae5761403524a1d8598c8e0715b7db, type: 3}
   hitPrefab: {fileID: 0}
   deathPrefab: {fileID: 0}
   sprite: {fileID: 0}

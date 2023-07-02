@@ -31,6 +31,8 @@ public class EnemyScript : MonoBehaviour
     public Vector3 direction;
     public Vector3 boss_direction;
     [SerializeField] public GameObject deathParticles;
+    [SerializeField] public GameObject hitParticles;
+    [SerializeField] public GameObject bomberParticles;
 
     public GameObject hitPrefab;
     public GameObject deathPrefab;
@@ -235,7 +237,7 @@ public class EnemyScript : MonoBehaviour
                 BomberDie();
                 DieEffects();
                 playerStats.KillEnemy(this.gameObject);
-                Instantiate(deathParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
+                Instantiate(bomberParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
                 Destroy(gameObject);
             }
 
@@ -264,6 +266,10 @@ public class EnemyScript : MonoBehaviour
                 playerStats.KillEnemy(this.gameObject);
                 DieEffects();
                 Destroy(gameObject,2f);
+            }
+            else
+            {
+                Instantiate(hitParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
             }
             Destroy(collision.gameObject);
         }
