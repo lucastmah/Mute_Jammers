@@ -7,7 +7,7 @@ public class FightLevelController : MonoBehaviour
     //public GameObject player;
     //list of enemy prefabs for the levels in order 1, 2, 3, ... 
     public GameObject[] enemyOptions;
-    private List<GameObject> enemies = new();
+    public List<GameObject> enemies = new();
     public int numSpawnsAtOnce = 1;
     public int delayBtwnSpawns = 3;
 
@@ -66,6 +66,7 @@ public class FightLevelController : MonoBehaviour
                 Destroy(go);
             }
         }
+        enemies.Clear();
         Invoke("WinLevel", 3);
     }
 

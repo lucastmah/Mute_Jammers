@@ -22,6 +22,18 @@ public class Projectile {
         
     }
 
+    void Start()
+    {
+        if(PowerupsList.GetInstance().hasHomingProjectiles)
+        {
+            Homing = true;
+        }
+        else
+        {
+            Homing=false;
+        }
+    }
+
     //public Projectile(Sprite projectileSprite, bool isPlayerProjectile, int hp, float speed, bool homing = false, bool destructable = false){
     //    this.ProjectileSprite = projectileSprite;
     //    this.isPlayerProjectile = isPlayerProjectile;
