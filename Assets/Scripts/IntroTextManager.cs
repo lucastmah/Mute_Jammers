@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class IntroTextManager : MonoBehaviour
 {
     public GameObject introText;
+    public GameObject stage0Img;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class IntroTextManager : MonoBehaviour
         {
             case 1:
                 text = "You've peaked in life, owning your own company! Let's finish our daily tasks.";
+                stage0Img.SetActive(true);
                 break;
             case 2: 
                 text = "Another proud day as CEO! Work is easy, if not very interesting. Let's keep this quick..."; 
