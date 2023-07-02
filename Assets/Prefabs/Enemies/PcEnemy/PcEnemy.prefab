@@ -130,7 +130,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -187,6 +187,9 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
+  hitPrefab: {fileID: 0}
+  deathPrefab: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!95 &1225392614359320598
 Animator:
   serializedVersion: 5
