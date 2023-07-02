@@ -103,15 +103,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         // Visually set the direction the player and stapler are facing
-        if (Mathf.Abs(horizontalMovement) > 0) {
-            isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
-
+        if (Mathf.Abs(horizontalMovement) > 0) { 
             // PLAYER MOVING
             animator.SetBool("isWalking", true);
-        } else {
-            animator.SetBool("isWalking", false);
+
+            isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
+
+            // Flip the player's sprite
             myRenderer.flipX = !isFacingRight;
             stapler.VisualUpdate(isFacingRight);
+        } else {
+            animator.SetBool("isWalking", false);
         }
 
         // Store the vertical speed from the rigidbody
@@ -227,8 +229,8 @@ public class PlayerController : MonoBehaviour
         myRenderer.transform.transform.localScale = new Vector3(xStretch, yStretch, 1);
         
         // Don't stretch the stapler, apply an inverse scale on it
-        stapler.transform.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
-
+        stapler.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
+        
 
         // Fall damage stuff
         if (wasGroundedLastFrame && !IsGrounded()) {
