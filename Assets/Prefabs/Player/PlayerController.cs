@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private StaplerScript stapler;
     [SerializeField] private AudioSource playerJumpSource;
+    [SerializeField] private AudioSource playerHurtSource;
     [SerializeField] private SpriteRenderer myRenderer;
     private int shootTimer;
 
@@ -45,19 +46,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float jumpSpeed = 3f;
     
     public bool takesFallDamage = false;
+    public int recoveryTime = 60;
 
+
+    // Fall damage checking
     float startY;
     bool wasGroundedLastFrame = false;
-
+    float fallDamageDistance = 2.0f; // distance you take fall damage after dropping. 5.0f is approx one scene height
     // Visual stretch
     float xStretch = 1;
     float yStretch = 1;
+
+    int recoveryTimer = 0; // when not zero, we can't move
 
     
 
     // PLAYER ANIMATION
     public Animator animator;
-    private float lastY;
+
 
 
     // Start is called before the first frame update
@@ -77,7 +83,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (recoveryTimer > 0) {
+            jumpPressed = false;
+            horizontalMovement = 0;
+            return;
+        }
+
         // Get inputs
         jumpPressed = Input.GetButton("Jump");
         horizontalMovement = Input.GetAxisRaw("Horizontal");
@@ -122,6 +133,7 @@ public class PlayerController : MonoBehaviour
         // Update timers
         jumpPressedTimer--;
         shootTimer--;
+        recoveryTimer--;
         footstepTimer-= (int)Mathf.Abs(horizontalMovement * moveSpeed);
 
         // Play footstep SFX
@@ -239,8 +251,8 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!wasGroundedLastFrame && IsGrounded()) {
-            Debug.Log(transform.position.y);
-            if (startY - transform.position.y > 2) {
+
+            if ((float)(startY - transform.position.y) > fallDamageDistance) {
                 DoFallDamage();
             }
         }
@@ -249,10 +261,19 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Hurt() {
+        if (recoveryTimer > 0)
+            return;
 
+        playerHurtSource.Play();
+        recoveryTimer = recoveryTime;
     }
 
     private void DoFallDamage() {
+        if (!takesFallDamage)
+            return;
+
+        Debug.Log("Fall damage taken!");
         
+        Hurt();
     }
 }

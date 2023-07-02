@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6085393997668387473}
   - component: {fileID: 6175260025548306887}
+  - component: {fileID: 7331477356999457609}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -284,6 +285,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7331477356999457609
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772415817022038463}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3d974a5d22ed6e44923ead883c772dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5725880999874141138
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +473,7 @@ Transform:
   - {fileID: 1591284693972577914}
   - {fileID: 6085393997668387473}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1363060139049399231
 SpriteRenderer:
@@ -612,7 +634,7 @@ MonoBehaviour:
   acceleration: 2
   jumpSpeed: 9.5
   takesFallDamage: 0
-  animator: {fileID: 14809031787729296}
+  animator: {fileID: 7331477356999457609}
 --- !u!82 &1143736347645302901
 AudioSource:
   m_ObjectHideFlags: 0
@@ -717,7 +739,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7673499090317660382}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e3d974a5d22ed6e44923ead883c772dc, type: 2}
   m_CullingMode: 0
