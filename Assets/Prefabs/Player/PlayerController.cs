@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         PowerupsList p = PowerupsList.GetInstance();
         takesFallDamage = !p.hasNoFallDmg;
         if (p.hasDoubleJump) {
-            MaxJumps+=2;
+            MaxJumps+=1;
         }
         if (!p.hasBonusMvspd) {
             moveSpeed -= 1.5f;
