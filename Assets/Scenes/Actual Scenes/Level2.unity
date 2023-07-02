@@ -184,6 +184,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: numSpawnsAtOnce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: enemyOptions.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -506,6 +510,7 @@ GameObject:
   - component: {fileID: 855531445}
   - component: {fileID: 855531448}
   - component: {fileID: 855531447}
+  - component: {fileID: 855531449}
   m_Layer: 6
   m_Name: level2
   m_TagString: Untagged
@@ -1086,6 +1091,51 @@ PolygonCollider2D:
       - {x: 0.74914837, y: 0.3911252}
       - {x: 0.7493758, y: 0.5616858}
   m_UseDelaunayMesh: 0
+--- !u!61 &855531449
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855531433}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.502143, y: -2.3778925}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 5.625}
+    newSize: {x: 10, y: 5.625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9957142, y: 0.869215}
+  m_EdgeRadius: 0
 --- !u!1001 &967388602
 PrefabInstance:
   m_ObjectHideFlags: 0
