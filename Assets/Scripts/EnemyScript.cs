@@ -94,8 +94,45 @@ public class EnemyScript : MonoBehaviour
             direction = Vector3.right;
         }
 
-        // Call movement function again after 3-5 seconds
+        // Call movement function again after delay
         Invoke("BossMovement", movement_delay);
+
+        // Modified script below to incorporate random boss pauses (currently unused)
+
+        // // Generate random number from 0-2
+        // float random_pause = Random.Range(0, 3);
+
+        // // If 2, then character will pause (33% chance)
+        // if (random_pause == 2)
+        // {
+        //     // 1 second pause if boss stopped
+        //     float movement_delay = 1;
+
+        //     // No direction to allow boss to pause
+        //     direction = Vector3.zero;
+
+        //     // Call movement function again after delay
+        //     Invoke("BossMovement", movement_delay);
+        // }
+
+        // else
+        // {
+        //     // Boss changes directions every 3-5 seconds
+        //     float movement_delay = Random.Range(3, 6);
+
+        //     if (direction == Vector3.right)
+        //     {
+        //         direction = Vector3.left;
+        //     }
+
+        //     else
+        //     {
+        //         direction = Vector3.right;
+        //     }
+
+        //     // Call movement function again after delay
+        //     Invoke("BossMovement", movement_delay);
+        // }
     }
 
     private void Behaviour()
