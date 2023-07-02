@@ -250,13 +250,13 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = IsGrounded();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(stats.health);
         if (collision.gameObject.CompareTag("Enemy Projectile"))
         {
             stats.DamageTaken(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
-            
+
         }
     }
 
