@@ -35,8 +35,11 @@ public class FightLevelController : MonoBehaviour
                 int xPos = Random.Range(-7, 1);
                 int yPos = Random.Range(1, 5);
                 int enemyIndex = Random.Range(0, enemyOptions.Length - 1);
-                GameObject temp = Instantiate(enemyOptions[enemyIndex], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                enemies.Add(temp);
+                if (Mathf.Abs(enemyIndex) < enemyOptions.Length)
+                {
+                    GameObject temp = Instantiate(enemyOptions[enemyIndex], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                    enemies.Add(temp);
+                }
             }
             yield return new WaitForSeconds(delayBtwnSpawns);
         }
