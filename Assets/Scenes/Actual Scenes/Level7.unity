@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1825312089466425985, guid: 7349c05a494f7bb41a93b8c9f0612076, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1825312089466425985, guid: 7349c05a494f7bb41a93b8c9f0612076, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1224,7 +1224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7402363465776752934, guid: c6d4e19153bb9c44b84cb6499c4f2ac5, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7402363465776752934, guid: c6d4e19153bb9c44b84cb6499c4f2ac5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1285,7 +1285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8060040170860369720, guid: 483702378356ff94d96cb54a2725ed1a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1342,7 +1342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3452563089699550267, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3452563089699550267, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1389,8 +1389,12 @@ PrefabInstance:
       value: LevelController
       objectReference: {fileID: 0}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: delayBtwnSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: enemyOptions.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: enemyOptions.Array.data[0]
@@ -1398,6 +1402,18 @@ PrefabInstance:
       objectReference: {fileID: 977187963201815704, guid: e88d62a74d22fd5459cb35c7fe978ea1, type: 3}
     - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
       propertyPath: enemyOptions.Array.data[1]
+      value: 
+      objectReference: {fileID: 5137140440692581416, guid: 1b394d0679e73014eaddfa621096592e, type: 3}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.data[2]
+      value: 
+      objectReference: {fileID: 7977766098121302158, guid: 861d180e26d01584f80b325ebe6c9cd3, type: 3}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.data[3]
+      value: 
+      objectReference: {fileID: 4595032632760452666, guid: ff0cc9c6744b23c428cae00d250a4c23, type: 3}
+    - target: {fileID: 5062638814619683664, guid: f7a8b76963af6204fa9b19f32364050f, type: 3}
+      propertyPath: enemyOptions.Array.data[4]
       value: 
       objectReference: {fileID: 1285737178926054186, guid: 647eb7dd825b08c4bae2c8f69623edf7, type: 3}
     m_RemovedComponents: []
