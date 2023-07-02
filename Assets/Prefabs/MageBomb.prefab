@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1793202848955638859}
   - component: {fileID: 1427057105166080330}
   - component: {fileID: 5136004125318035101}
+  - component: {fileID: 4674441290995426910}
   m_Layer: 0
   m_Name: MageBomb
   m_TagString: Untagged
@@ -130,3 +131,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &4674441290995426910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724473237798455622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec97d03b838b804b9cc639dbf915e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack_damage: 40
