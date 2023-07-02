@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 264
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -179,7 +179,7 @@ MonoBehaviour:
   attack_damage: 20
   projectile_speed: 1
   attack_speed: 1
-  move_speed: 5
+  move_speed: 2
   enemy_type: 6
   attack_timer: 0
   invincibility: 0

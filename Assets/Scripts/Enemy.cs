@@ -22,6 +22,6 @@ public class Enemy
 
     ~Enemy()
     {
-        Debug.Log("enemy destroyed");
+        //Debug.Log("enemy destroyed");
     }
 }

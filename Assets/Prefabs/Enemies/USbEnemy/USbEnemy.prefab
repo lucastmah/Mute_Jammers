@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1808300944358400343}
   - component: {fileID: 3019061034004476113}
   - component: {fileID: 2157237738189340094}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: USbEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 264
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
