@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 99999
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 50000
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -184,4 +184,5 @@ MonoBehaviour:
   attack_timer: 0
   invincibility: 0
   direction: {x: 0, y: 0, z: 0}
+  boss_direction: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 5906052992081726957, guid: b1c7bcefbed1640b58e902a49ba435a5, type: 3}
