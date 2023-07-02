@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4626228922051426788}
   - component: {fileID: 5282280668415169299}
   - component: {fileID: 4969476931373190492}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ZoomEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

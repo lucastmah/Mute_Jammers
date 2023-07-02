@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8689002764802736796}
   - component: {fileID: 4020483762586106469}
   - component: {fileID: 4764614180240666295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TeamsEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

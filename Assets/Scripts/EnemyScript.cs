@@ -30,6 +30,7 @@ public class EnemyScript : MonoBehaviour
     public bool invincibility;
     public Vector3 direction;
     [SerializeField] public GameObject deathParticles;
+    //private FightLevelController fightLevelController;
 
     // mage
     int xDir = 0;
@@ -40,6 +41,7 @@ public class EnemyScript : MonoBehaviour
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+        //fightLevelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -60,7 +62,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Behaviour()
     {
-        Debug.Log("active");
+        //Debug.Log("active");
         if (enemy_type == (int)(Monster.Floater)) {
             move_speed = 0.025f;
             if (attack_timer < 0) {
@@ -77,7 +79,8 @@ public class EnemyScript : MonoBehaviour
         // update attack timer
         if (attack_timer < enemy.attack_speed)
         {
-            attack_timer++;
+            //attack_timer++;
+            attack_timer += Time.deltaTime;
         }
         // if Monster = boss, shoot 4 projectiles at a certain range
         if (Mathf.Abs(player.transform.position.x - transform.position.x) < 5 && enemy_type == (int)Monster.Boss)
@@ -121,7 +124,7 @@ public class EnemyScript : MonoBehaviour
         // move towards player
         else
         {
-            transform.position = transform.position + enemy.move_speed  * direction;
+            transform.position = transform.position + enemy.move_speed  * direction * Time.deltaTime;
             //Debug.Log("move");
         }
     }
@@ -165,7 +168,8 @@ public class EnemyScript : MonoBehaviour
             if (enemy.health <= 0)
             {
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
-                playerStats.WinLevel();
+                //playerStats.WinLevel();
+                playerStats.KillEnemy();
                 Destroy(gameObject);
             }
             Destroy(collision.gameObject);

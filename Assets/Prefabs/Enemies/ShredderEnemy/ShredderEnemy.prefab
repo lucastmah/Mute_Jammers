@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7105929973092235635}
   - component: {fileID: 6960592152751676910}
   - component: {fileID: 4080739475539680480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShredderEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

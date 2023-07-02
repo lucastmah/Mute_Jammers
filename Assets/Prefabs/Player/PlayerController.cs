@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float jumpSpeed = 3f;
     
     public bool takesFallDamage = false;
-    public int recoveryTime = 60;
+    public int recoveryTime = 240;
 
 
     // Fall damage checking
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (recoveryTimer > 0) {
+        if (recoveryTimer > (recoveryTime * 0.8f)) {
             jumpPressed = false;
             horizontalMovement = 0;
             return;

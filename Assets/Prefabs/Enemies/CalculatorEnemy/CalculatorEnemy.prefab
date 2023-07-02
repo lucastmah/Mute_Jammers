@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5643824970205244148}
   - component: {fileID: 2654968789752167620}
   - component: {fileID: 8743342811248139002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CalculatorEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
