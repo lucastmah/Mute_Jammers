@@ -42,6 +42,7 @@ public class ProjectileBehavior : MonoBehaviour
         }
         else
         {
+            Debug.Log(gameObject.transform.rotation);
             transform.localPosition = new Vector2(transform.position.x + ProjectileClass.Speed * transform.localScale.x, transform.position.y);
         }
         
@@ -97,14 +98,13 @@ public class ProjectileBehavior : MonoBehaviour
         return new Vector2(vec.x / norm, vec.y / norm);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        Destroy(gameObject);
-        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
-        GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+        if (ProjectileClass.isPlayerProjectile)
+        {
+            GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
+            Destroy(t, 4);
+        }
     }
 }
