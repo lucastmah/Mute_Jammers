@@ -175,8 +175,8 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   projectile: {fileID: 1749251704239645322, guid: 38f08c74f8ad6458e8e1a592685f9b1b, type: 3}
   mageAttack: {fileID: 0}
-  health: 500
-  attack_damage: 20
+  health: 100
+  attack_damage: 1
   projectile_speed: 1
   attack_speed: 1
   move_speed: 1
