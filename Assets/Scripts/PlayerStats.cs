@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour
         // Full health at start
         health = maxHealth;
 
+        levelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
+
         // Double attack damage (edit as needed)
         if (PowerupsList.GetInstance().hasBonusAtk == true)
         {
@@ -47,5 +49,10 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("you're invincible!");
         }
+    }
+
+    public void LoseGame()
+    {
+        levelController.OnEnemyDeath();
     }
 }

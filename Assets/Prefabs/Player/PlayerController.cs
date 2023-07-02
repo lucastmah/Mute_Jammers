@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         stapler.VisualUpdate(isFacingRight);
+        stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
     }
 
     private bool CanJump() {

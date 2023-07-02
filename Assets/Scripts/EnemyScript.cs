@@ -38,6 +38,7 @@ public class EnemyScript : MonoBehaviour
     {
         enemy = new Enemy(health, attack_damage, projectile_speed, attack_speed, move_speed, invincibility);
         player = GameObject.Find("Player");
+        playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -58,7 +59,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Behaviour()
     {
-        if (enemy_type == (int)(Monster.Mage)) {
+        if (enemy_type == (int)(Monster.Floater)) {
             move_speed = 0.025f;
             if (attack_timer < 0) {
                 xDir = (int)Mathf.Sign(player.transform.position.x - transform.position.x);
@@ -121,7 +122,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("collision detected");    
+        Debug.Log("collision detected");    
         //Debug.Log("enemy has hit " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -140,18 +141,24 @@ public class EnemyScript : MonoBehaviour
                 playerStats.DamageTaken(enemy.attack_damage);
                 Destroy(gameObject);
             }
+
+            else if (enemy_type == (int)Monster.Floater)
+            {
+                playerStats.DamageTaken(enemy.attack_damage);
+            }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("hit");
+        Debug.Log("hit");
         if (collision.gameObject.CompareTag("Player Projectile"))
         {
             TakeDamage(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
             //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
+                playerStats.LoseGame();
                 Destroy(gameObject);
             }
         }
