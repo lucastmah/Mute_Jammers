@@ -50,20 +50,17 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.Find("Player");
         playerStats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
 
-        if (enemy_type == (int)Monster.Boss)
-        {
+        if (enemy_type == (int)Monster.Boss) {
             // Get initial player direction for boss to follow
-            if (player.transform.position.x < transform.position.x)
-            {
+            if (player.transform.position.x < transform.position.x) {
                 boss_direction = Vector3.left;
-            }
-            else
-            {
+            } else {
                 boss_direction = Vector3.right;
             }
 
-        // Boss movement is separate from other enemies b/c independent of player location
-        Invoke("BossMovement", 0.5f);
+            // Boss movement is separate from other enemies b/c independent of player location
+            Invoke("BossMovement", 0.5f);
+        }
         //fightLevelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
     }
     // Update is called once per frame
