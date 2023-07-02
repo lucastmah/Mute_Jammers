@@ -9,9 +9,13 @@ public class Projectile {
     private Sprite ProjectileSprite;
     public bool isPlayerProjectile;
     public float Speed = 0.1f;
+    private Vector2 currentSpeed;
+    public int lifetime = 60;
+    public int damage = 10;
 
     //other properties
     public bool Homing;
+    public float acceleration = 0.01f;
 
     public Projectile() 
     {
@@ -31,6 +35,15 @@ public class Projectile {
         this.ProjectileSprite = sprite;
     }
 
+    public void setSpeed(Vector2 speed)
+    {
+        currentSpeed = speed;
+    }
+
+    public Vector2 getCurrentSpeed()
+    {
+        return currentSpeed;
+    }
     //public Sprite getProjectileSprite()
     //{
     //    return this.ProjectileSprite;

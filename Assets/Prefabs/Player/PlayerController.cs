@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -42,9 +44,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 12f; // top speed
     [SerializeField] public float acceleration = 2f; // acceleration to top speed
     [SerializeField] public float jumpSpeed = 3f;
+    
+    public bool takesFallDamage = false;
 
+    float startY;
+    bool wasGroundedLastFrame = false;
+
+    // Visual stretch
     float xStretch = 1;
     float yStretch = 1;
+
+    
 
 
     // Start is called before the first frame update
@@ -64,6 +74,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         // Get inputs
         jumpPressed = Input.GetButton("Jump");
         horizontalMovement = Input.GetAxisRaw("Horizontal");
@@ -82,8 +93,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void PlayFootSound() {
+        walkingSource.clip = walkingSounds[UnityEngine.Random.Range(0, walkingSounds.Length)];
+        walkingSource.Play();
+    }
+
     private void FixedUpdate() {
-       
         // Visually set the direction the player and stapler are facing
         if (Mathf.Abs(horizontalMovement) > 0) {
             isFacingRight = (Mathf.Sign(horizontalMovement) > 0);
@@ -102,8 +117,7 @@ public class PlayerController : MonoBehaviour
         // Play footstep SFX
         if (footstepTimer < 0 && IsGrounded()) {
             footstepTimer = footstepTime;
-            walkingSource.clip = walkingSounds[UnityEngine.Random.Range(0, walkingSounds.Length)];
-            walkingSource.Play();
+            PlayFootSound();
         }
 
         // Jump buffering
@@ -114,12 +128,17 @@ public class PlayerController : MonoBehaviour
                 // We're landing, this will fire once (ish?)
                 xStretch = 2.4f;
                 yStretch = .5f;
+
+                PlayFootSound();
             }
             
             jumpBufferTimer = jumpBufferTime;
             availableJumps = MaxJumps;
+        }
 
-            
+        // Fall damage start
+        if (jumpBufferTimer == (jumpBufferTime - 1)) {
+            startY = transform.transform.position.y;
         }
 
         // Redefine acceleration so we can modify it mid run
@@ -178,20 +197,34 @@ public class PlayerController : MonoBehaviour
             yStretch = 1;
         }
 
-        myRenderer.size += new Vector2(xStretch, yStretch);//, 1);
-        //Debug.Log(myRenderer.size);
-    }
+        // Apply the stretch
+        myRenderer.transform.transform.localScale = new Vector3(xStretch, yStretch, 1);
+        
+        // Don't stretch the stapler, apply an inverse scale on it
+        stapler.transform.transform.localScale = new Vector3(1 / xStretch, 1 / yStretch, 1);
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy Projectile"))
-        {
-            //TakeDamage(collision.gameObject.attack_damage);
+
+        // Fall damage stuff
+        if (wasGroundedLastFrame && !IsGrounded()) {
+            startY = transform.position.y;
+            //Debug.Log(startY);
         }
+
+        if (!wasGroundedLastFrame && IsGrounded()) {
+            Debug.Log(startY - transform.position.y);
+            if (startY - transform.position.y > 2) {
+                DoFallDamage();
+            }
+        }
+
+        wasGroundedLastFrame = IsGrounded();
     }
 
-    private void TakeDamage(int damage)
-    {
-        stats.health -= damage;
+    public void Hurt() {
+
+    }
+
+    private void DoFallDamage() {
+        
     }
 }
