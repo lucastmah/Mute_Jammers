@@ -117,7 +117,7 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player Projectile"))
         {
             TakeDamage(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
-            Debug.Log(enemy.health);
+            //Debug.Log(enemy.health);
             if (enemy.health <= 0)
             {
                 Destroy(gameObject);
