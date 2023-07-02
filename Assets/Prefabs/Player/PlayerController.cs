@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!wasGroundedLastFrame && IsGrounded()) {
-            Debug.Log(startY - transform.position.y);
+            //Debug.Log(startY - transform.position.y);
             if (startY - transform.position.y > 2) {
                 DoFallDamage();
             }
@@ -220,8 +220,14 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = IsGrounded();
     }
 
-    public void Hurt() {
-
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(stats.health);
+        if (collision.gameObject.CompareTag("Enemy Projectile"))
+        {
+            stats.DamageTaken(collision.gameObject.GetComponent<ProjectileBehavior>().ProjectileClass.damage);
+            
+        }
     }
 
     private void DoFallDamage() {

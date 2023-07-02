@@ -59,5 +59,9 @@ public class PlayerStats : MonoBehaviour
                 levelController.OnPlayerDeath();
             }
         }
+        else
+        {
+            Debug.Log("you're invincible!");
+        }
     }
 }

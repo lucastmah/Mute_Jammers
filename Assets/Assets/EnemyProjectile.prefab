@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3760501824161025710}
   m_Layer: 9
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: Enemy Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,5 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileClass:
     isPlayerProjectile: 0
-    Speed: 1
+    Speed: 0.2
+    lifetime: 60
+    damage: 10
     Homing: 0
+    acceleration: 0.01
