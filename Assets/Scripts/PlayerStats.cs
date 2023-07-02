@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
 
         levelController = GameObject.Find("LevelController").GetComponent<FightLevelController>();
-        hpText = GameObject.Find("hpText").GetComponent<TextMeshProUGUI>();
+        //hpText = GameObject.Find("hpText").GetComponent<TextMeshProUGUI>();
 
         // Double attack damage (edit as needed)
         if (PowerupsList.GetInstance().hasBonusAtk == true)
