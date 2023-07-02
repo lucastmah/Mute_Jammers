@@ -97,6 +97,8 @@ public class ProjectileBehavior : MonoBehaviour
         return new Vector2(vec.x / norm, vec.y / norm);
     }
 
+
+
     private void OnCollisionEnter2D(Collision2D collision) {
         Destroy(gameObject);
         GameObject t = Instantiate(FakeStapleClass, new Vector3(transform.position.x, transform.position.y), new Quaternion(0, 0, 0, 0));
